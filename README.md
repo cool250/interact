@@ -17,5 +17,5 @@ Interact backend uses OpenTok Java SDK and Spring Framework to expose REST API.
 * Tomcat 1.7.x or higher
 
 To compile the application, run "mvn clean install" under server\interact. 
-Copy the generated interact.war under /target folder and deploy on tomcat.
+Copy the generated interact.war from target folder and deploy on tomcat.
 

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" data-framework="marionettejs">
+	<head>
+		<meta charset="utf-8">
+		<title>Marionette • InteractMVC</title>
+		<link rel="stylesheet" href="css/app.css">
+	</head>
+	<body>
+		<section id="interact">
+            <subscriber id="subscriber"></subscriber>
+            <publisher id="publisher"></publisher>
+
+		</section>
+        
+		<script type="text/html" id="template-subscriber">
+			<h1>Interactive subscriber</h1>
+            <div id="subscriber"></div>
+		</script>
+        
+        <script type="text/html" id="template-publisher">
+			<h1>Interactive publisher</h1>
+            <div id="publisher"></div>
+		</script>
+        
+
+                
+		<!-- vendor libraries -->
+		<script src="node_modules/jquery/dist/jquery.js"></script>
+		<script src="node_modules/underscore/underscore.js"></script>
+		<script src="node_modules/backbone/backbone.js"></script>
+		<script src="node_modules/backbone.localstorage/backbone.localStorage.js"></script>
+		<script src="node_modules/backbone.marionette/lib/backbone.marionette.js"></script>
+		<script src="node_modules/backbone.radio/build/backbone.radio.js"></script>
+		<!-- application -->
+		<script src="js/InteractMVC.Application.js"></script>
+		<script src="js/InteractMVC.Layout.js"></script>
+		<script src="js/InteractMVC.Views.js"></script>
+		<script src="js/InteractMVC.Router.js"></script>
+		<script src="js/InteractMVC.FilterState.js"></script>
+		<script src="js/InteractMVC.js"></script>
+        <script src="https://static.opentok.com/v2/js/opentok.min.js"></script>
+	</body>
+</html>

@@ -8,6 +8,8 @@ app.use('/node_modules', express.static(__dirname + '/node_modules'));
 // Add static middleware for other static application file
 app.use('/web', express.static(__dirname + '/web'));
 
-app.listen(3000);
+var port = process.env.PORT || 3000;
 
-console.log("Running at Port 3000");
+app.listen(port);
+
+console.log("Running at Port " + port);

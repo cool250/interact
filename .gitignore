@@ -1,0 +1,7 @@
+.ntvs_analysis.dat
+.vs/Interact/v14/.suo
+*.dll
+*.njsproj
+*.sln
+obj/Debug/interact.njsproj.FileListAbsolute.txt
+*.cache

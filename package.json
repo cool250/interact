@@ -1,13 +1,11 @@
 {
   "private": true,
   "dependencies": {
-    "todomvc-common": "~1.0.1",
-    "todomvc-app-css": "~1.0.1",
-    "jquery": "~2.1.1",
-    "handlebars": "~2.0.0",
-    "director": "~1.2.2",
-    "bootstrap": "~3.3.5",
-    "font-awesome": "~4.4.0",
-    "express": "^4.13.3"
+    "alt": "^0.17.3",
+    "director": "^1.2.0",
+    "react": "^0.13.3",
+    "express": "^4.13.3",
+    "todomvc-app-css": "^2.0.0",
+    "todomvc-common": "^1.0.1"
   }
 }

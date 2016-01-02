@@ -47,7 +47,7 @@ var CodeEditor = React.createClass({
 		};
 		return (
 			<div>
-				<form role="form" className="col-sm-12">  	
+				<form role="form" className="row">  	
 					<div className="form-group">
 						<label className="col-sm-2" htmlFor="markup">Select Language:</label>
 						<div className="col-sm-10">
@@ -60,8 +60,11 @@ var CodeEditor = React.createClass({
 						</div>
 					</div>					
 				</form>
-				<div className="col-sm-12">
+				<div className="row">
 					<Codemirror ref="editor" value={this.state.code} onChange={this.updateCode} options={options} interact={this.interact}/>
+				</div>
+				<div className="row">
+					<button className="btn btn-primary pull-right" value="Submit Solution">Submit Solution</button>
 				</div>
 			</div>
 		);

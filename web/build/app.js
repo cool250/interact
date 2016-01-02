@@ -49096,7 +49096,7 @@ var Layout = require('./components/layout.jsx');
 
 ReactDOM.render(React.createElement(Layout, null), ReactApp);
 
-},{"./components/layout.jsx":425,"react":417,"react-dom":264}],423:[function(require,module,exports){
+},{"./components/layout.jsx":427,"react":417,"react-dom":264}],423:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -49155,7 +49155,7 @@ var CodeEditor = React.createClass({
 			null,
 			React.createElement(
 				'form',
-				{ role: 'form', className: 'col-sm-12' },
+				{ role: 'form', className: 'row' },
 				React.createElement(
 					'div',
 					{ className: 'form-group' },
@@ -49196,8 +49196,17 @@ var CodeEditor = React.createClass({
 			),
 			React.createElement(
 				'div',
-				{ className: 'col-sm-12' },
+				{ className: 'row' },
 				React.createElement(Codemirror, { ref: 'editor', value: this.state.code, onChange: this.updateCode, options: options, interact: this.interact })
+			),
+			React.createElement(
+				'div',
+				{ className: 'row' },
+				React.createElement(
+					'button',
+					{ className: 'btn btn-primary pull-right', value: 'Submit Solution' },
+					'Submit Solution'
+				)
 			)
 		);
 	}
@@ -49299,28 +49308,6 @@ module.exports = CodeMirror;
 'use strict';
 
 var React = require('react');
-var NavigationBar = require('./navbar.jsx');
-var MainLayout = require('./main.jsx');
-
-var Layout = React.createClass({
-  displayName: 'Layout',
-
-  render: function render() {
-    return React.createElement(
-      'div',
-      { className: 'Layout' },
-      React.createElement(NavigationBar, null),
-      React.createElement(MainLayout, null)
-    );
-  }
-});
-
-module.exports = Layout;
-
-},{"./main.jsx":426,"./navbar.jsx":427,"react":417}],426:[function(require,module,exports){
-'use strict';
-
-var React = require('react');
 var BootStrap = require('bootstrap');
 var ReactBootstrap = require('react-bootstrap');
 var CodeEditor = require('./CodeEditor.jsx');
@@ -49349,7 +49336,7 @@ var MainLayout = React.createClass({
 
 module.exports = MainLayout;
 
-},{"./CodeEditor.jsx":423,"bootstrap":11,"react":417,"react-bootstrap":253}],427:[function(require,module,exports){
+},{"./CodeEditor.jsx":423,"bootstrap":11,"react":417,"react-bootstrap":253}],426:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -49448,4 +49435,26 @@ var NavigationBar = React.createClass({
 
 module.exports = NavigationBar;
 
-},{"bootstrap":11,"react":417,"react-bootstrap":253}]},{},[422]);
+},{"bootstrap":11,"react":417,"react-bootstrap":253}],427:[function(require,module,exports){
+'use strict';
+
+var React = require('react');
+var NavigationBar = require('./Navbar.jsx');
+var MainLayout = require('./Main.jsx');
+
+var Layout = React.createClass({
+  displayName: 'Layout',
+
+  render: function render() {
+    return React.createElement(
+      'div',
+      { className: 'Layout' },
+      React.createElement(NavigationBar, null),
+      React.createElement(MainLayout, null)
+    );
+  }
+});
+
+module.exports = Layout;
+
+},{"./Main.jsx":425,"./Navbar.jsx":426,"react":417}]},{},[422]);

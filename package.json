@@ -1,11 +1,21 @@
 {
-  "private": true,
+  "name": "RightHire",
+  "description": "Basic example of using React with CommonJS",
   "dependencies": {
-    "alt": "^0.17.3",
-    "director": "^1.2.0",
-    "react": "^0.13.3",
+    "babel-preset-react": "^6.3.13",
+    "babelify": "^6.4.0",
+    "bootstrap": "^3.3.6",
+    "browserify": "^12.0.1",
     "express": "^4.13.3",
-    "todomvc-app-css": "^2.0.0",
-    "todomvc-common": "^1.0.1"
+    "react": "^0.14.5",
+    "react-bootstrap": "^0.28.1",
+    "react-dom": "^0.14.5",
+    "uglifyjs": "^2.4.10",
+    "watchify": "^3.4.0"
+  },
+  "scripts": {
+    "watch": "watchify web/src/App.jsx -v -t babelify -o web/build/app.js",
+    "build": "browserify web/src/App.jsx -t babelify | uglifyjs -mc warnings=false > web/build/app.js",
+    "start": "node server.js"
   }
 }

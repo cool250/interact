@@ -1,6 +1,6 @@
 var React  = require('react');
-var NavigationBar = require('./navbar.jsx');
-var MainLayout = require('./main.jsx');
+var NavigationBar = require('./Navbar.jsx');
+var MainLayout = require('./Main.jsx');
 
 var Layout = React.createClass({
   render: function() {

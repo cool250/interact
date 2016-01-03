@@ -63,7 +63,7 @@ var CodeEditor = React.createClass({
                     </div>
                 </div>
                 <div className="row">
-                    <Codemirror className="col-sm-8" ref="editor"/>
+                    <Codemirror className="col-sm-8" ref="editor" options={options} interact={this.interact}/>
                 </div>
                 <div className="row">
                     <div className="col-sm-8">

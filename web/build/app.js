@@ -31706,7 +31706,7 @@ var CodeEditor = React.createClass({
             React.createElement(
                 'div',
                 { className: 'row' },
-                React.createElement(Codemirror, { className: 'col-sm-8', ref: 'editor' })
+                React.createElement(Codemirror, { className: 'col-sm-8', ref: 'editor', options: options, interact: this.interact })
             ),
             React.createElement(
                 'div',

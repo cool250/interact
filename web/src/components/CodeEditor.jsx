@@ -13,11 +13,11 @@ class CodeEditor extends React.Component {
 
     constructor() {
         super();
-        this.render = this.render.bind(this);
         this.state = {
             readOnly: false,
             mode: 'markdown'
         };
+        this.changeMode = this.changeMode.bind(this);
     }
 
     changeMode (e) {

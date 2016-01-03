@@ -31688,11 +31688,11 @@ var CodeEditor = (function (_React$Component) {
         _classCallCheck(this, CodeEditor);
 
         _get(Object.getPrototypeOf(CodeEditor.prototype), 'constructor', this).call(this);
-        this.render = this.render.bind(this);
         this.state = {
             readOnly: false,
             mode: 'markdown'
         };
+        this.changeMode = this.changeMode.bind(this);
     }
 
     _createClass(CodeEditor, [{
@@ -31849,8 +31849,8 @@ var CodeMirror = (function (_React$Component) {
         _classCallCheck(this, CodeMirror);
 
         _get(Object.getPrototypeOf(CodeMirror.prototype), 'constructor', this).call(this);
-        this.render = this.render.bind(this);
         this.state = { isFocused: false };
+        this.codemirrorValueChanged = this.codemirrorValueChanged.bind(this);
     }
 
     _createClass(CodeMirror, [{

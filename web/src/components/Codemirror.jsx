@@ -16,8 +16,8 @@ class CodeMirror extends React.Component {
 
     constructor() {
         super();
-        this.render = this.render.bind(this);
         this.state = {isFocused: false};
+        this.codemirrorValueChanged = this.codemirrorValueChanged.bind(this);
     }
 
     componentDidMount () {

@@ -6,10 +6,11 @@ import Content from './components/Content.jsx';
 
 // Finally, we render a <Router> with some <Route>s.
 // It does all the fancy routing stuff for us.
+// @TODO add the child paths
 render((
     <Router history={browserHistory}>
         <Route path="/" component={AppLayout}>
-            <IndexRoute component={Content} />
+
         </Route>
     </Router>
 ), ReactApp)

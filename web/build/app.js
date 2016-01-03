@@ -35749,14 +35749,11 @@ var _componentsContentJsx2 = _interopRequireDefault(_componentsContentJsx);
 
 // Finally, we render a <Router> with some <Route>s.
 // It does all the fancy routing stuff for us.
+// @TODO add the child paths
 (0, _reactDom.render)(_react2['default'].createElement(
     _reactRouter.Router,
     { history: _reactRouter.browserHistory },
-    _react2['default'].createElement(
-        _reactRouter.Route,
-        { path: '/', component: _componentsAppLayoutJsx2['default'] },
-        _react2['default'].createElement(_reactRouter.IndexRoute, { component: _componentsContentJsx2['default'] })
-    )
+    _react2['default'].createElement(_reactRouter.Route, { path: '/', component: _componentsAppLayoutJsx2['default'] })
 ), ReactApp);
 
 },{"./components/AppLayout.jsx":217,"./components/Content.jsx":220,"react":213,"react-dom":60,"react-router":80}],217:[function(require,module,exports){

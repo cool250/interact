@@ -1,6 +1,6 @@
-var React = require('react');
+import React from 'react';
 
-var Footer = React.createClass({
+const Footer = React.createClass({
     render: function () {
         return (
             <div className="navbar navbar-default navbar-fixed-bottom">
@@ -14,7 +14,4 @@ var Footer = React.createClass({
     }
 });
 
-module.exports = Footer;
-
-
-
+export default Footer;

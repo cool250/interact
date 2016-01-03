@@ -1,6 +1,6 @@
-var React = require('react');
+import React from 'react';
 
-var NavigationBar = React.createClass({
+const NavigationBar = React.createClass({
     render: function () {
         return (
             <nav className="navbar navbar-inverse" role="navigation">
@@ -23,4 +23,4 @@ var NavigationBar = React.createClass({
     }
 });
 
-module.exports = NavigationBar;
+export default NavigationBar;

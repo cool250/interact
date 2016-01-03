@@ -31563,53 +31563,96 @@ module.exports = require('./lib/React');
 },{"./lib/React":63}],169:[function(require,module,exports){
 'use strict';
 
-var React = require('react');
-var ReactDOM = require('react-dom');
-var AppLayout = require('./components/AppLayout.jsx');
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-ReactDOM.render(React.createElement(AppLayout, null), ReactApp);
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = require('react-dom');
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _componentsAppLayoutJsx = require('./components/AppLayout.jsx');
+
+var _componentsAppLayoutJsx2 = _interopRequireDefault(_componentsAppLayoutJsx);
+
+_reactDom2['default'].render(_react2['default'].createElement(_componentsAppLayoutJsx2['default'], null), ReactApp);
 
 },{"./components/AppLayout.jsx":170,"react":168,"react-dom":39}],170:[function(require,module,exports){
 'use strict';
 
-var React = require('react');
-var NavigationBar = require('./Navbar.jsx');
-var Content = require('./Content.jsx');
-var Footer = require('./Footer.jsx');
+Object.defineProperty(exports, '__esModule', {
+    value: true
+});
 
-var AppLayout = React.createClass({
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _NavBarJsx = require('./NavBar.jsx');
+
+var _NavBarJsx2 = _interopRequireDefault(_NavBarJsx);
+
+var _ContentJsx = require('./Content.jsx');
+
+var _ContentJsx2 = _interopRequireDefault(_ContentJsx);
+
+var _FooterJsx = require('./Footer.jsx');
+
+var _FooterJsx2 = _interopRequireDefault(_FooterJsx);
+
+var AppLayout = _react2['default'].createClass({
     displayName: 'AppLayout',
 
     render: function render() {
-        return React.createElement(
+        return _react2['default'].createElement(
             'div',
             { className: 'Layout' },
-            React.createElement(NavigationBar, null),
-            React.createElement(Content, null),
-            React.createElement(Footer, null)
+            _react2['default'].createElement(_NavBarJsx2['default'], null),
+            _react2['default'].createElement(_ContentJsx2['default'], null),
+            _react2['default'].createElement(_FooterJsx2['default'], null)
         );
     }
 });
 
-module.exports = AppLayout;
+exports['default'] = AppLayout;
+module.exports = exports['default'];
 
-},{"./Content.jsx":173,"./Footer.jsx":174,"./Navbar.jsx":175,"react":168}],171:[function(require,module,exports){
+},{"./Content.jsx":173,"./Footer.jsx":174,"./NavBar.jsx":175,"react":168}],171:[function(require,module,exports){
 'use strict';
 
-var React = require('react');
-var ReactDOM = require('react-dom');
-var Codemirror = require('./Codemirror.jsx');
+Object.defineProperty(exports, '__esModule', {
+    value: true
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _CodemirrorJsx = require('./Codemirror.jsx');
+
+var _CodemirrorJsx2 = _interopRequireDefault(_CodemirrorJsx);
 
 require('codemirror/mode/javascript/javascript');
+
 require('codemirror/mode/xml/xml');
+
 require('codemirror/mode/clike/clike');
+
 require('codemirror/mode/markdown/markdown');
 
 require('codemirror/addon/hint/show-hint');
+
 require('codemirror/addon/hint/xml-hint');
+
 require('codemirror/addon/hint/javascript-hint');
 
-var CodeEditor = React.createClass({
+var CodeEditor = _react2['default'].createClass({
     displayName: 'CodeEditor',
 
     getInitialState: function getInitialState() {
@@ -31648,53 +31691,53 @@ var CodeEditor = React.createClass({
             extraKeys: { "Ctrl-Space": "autocomplete" },
             mode: this.state.mode
         };
-        return React.createElement(
+        return _react2['default'].createElement(
             'div',
             null,
-            React.createElement(
+            _react2['default'].createElement(
                 'div',
                 { className: 'row' },
-                React.createElement(
+                _react2['default'].createElement(
                     'label',
                     { className: 'col-sm-2', htmlFor: 'markup' },
                     'Select Language:'
                 ),
-                React.createElement(
+                _react2['default'].createElement(
                     'div',
                     { className: 'col-sm-2' },
-                    React.createElement(
+                    _react2['default'].createElement(
                         'select',
                         { className: 'form-control', onChange: this.changeMode, value: this.state.mode, id: 'markup' },
-                        React.createElement(
+                        _react2['default'].createElement(
                             'option',
                             { value: 'markdown' },
                             'Markdown'
                         ),
-                        React.createElement(
+                        _react2['default'].createElement(
                             'option',
                             { value: 'javascript' },
                             'JavaScript'
                         ),
-                        React.createElement(
+                        _react2['default'].createElement(
                             'option',
                             { value: 'text/x-java' },
                             'Java'
                         ),
-                        React.createElement(
+                        _react2['default'].createElement(
                             'option',
                             { value: 'text/x-objectivec' },
                             'Objective C'
                         )
                     )
                 ),
-                React.createElement(
+                _react2['default'].createElement(
                     'div',
                     { className: 'col-sm-4' },
-                    React.createElement(
+                    _react2['default'].createElement(
                         'p',
                         { className: 'text-info' },
                         'Press ',
-                        React.createElement(
+                        _react2['default'].createElement(
                             'strong',
                             null,
                             'ctrl-space'
@@ -31703,18 +31746,18 @@ var CodeEditor = React.createClass({
                     )
                 )
             ),
-            React.createElement(
+            _react2['default'].createElement(
                 'div',
                 { className: 'row' },
-                React.createElement(Codemirror, { className: 'col-sm-8', ref: 'editor', options: options, interact: this.interact })
+                _react2['default'].createElement(_CodemirrorJsx2['default'], { className: 'col-sm-8', ref: 'editor', options: options, interact: this.interact })
             ),
-            React.createElement(
+            _react2['default'].createElement(
                 'div',
                 { className: 'row' },
-                React.createElement(
+                _react2['default'].createElement(
                     'div',
                     { className: 'col-sm-8' },
-                    React.createElement(
+                    _react2['default'].createElement(
                         'button',
                         { className: 'btn btn-primary pull-right', value: 'Submit Solution' },
                         'Submit Solution'
@@ -31725,25 +31768,40 @@ var CodeEditor = React.createClass({
     }
 });
 
-module.exports = CodeEditor;
+exports['default'] = CodeEditor;
+module.exports = exports['default'];
 
-},{"./Codemirror.jsx":172,"codemirror/addon/hint/javascript-hint":2,"codemirror/addon/hint/show-hint":3,"codemirror/addon/hint/xml-hint":4,"codemirror/mode/clike/clike":6,"codemirror/mode/javascript/javascript":7,"codemirror/mode/markdown/markdown":8,"codemirror/mode/xml/xml":10,"react":168,"react-dom":39}],172:[function(require,module,exports){
+},{"./Codemirror.jsx":172,"codemirror/addon/hint/javascript-hint":2,"codemirror/addon/hint/show-hint":3,"codemirror/addon/hint/xml-hint":4,"codemirror/mode/clike/clike":6,"codemirror/mode/javascript/javascript":7,"codemirror/mode/markdown/markdown":8,"codemirror/mode/xml/xml":10,"react":168}],172:[function(require,module,exports){
 'use strict';
 
-var CM = require('codemirror');
-var React = require('react');
-var className = require('classnames');
+Object.defineProperty(exports, '__esModule', {
+    value: true
+});
 
-var CodeMirror = React.createClass({
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _codemirror = require('codemirror');
+
+var _codemirror2 = _interopRequireDefault(_codemirror);
+
+var _classNames = require('classNames');
+
+var _classNames2 = _interopRequireDefault(_classNames);
+
+var CodeMirror = _react2['default'].createClass({
     displayName: 'CodeMirror',
 
     propTypes: {
-        onChange: React.PropTypes.func,
-        onFocusChange: React.PropTypes.func,
-        options: React.PropTypes.object,
-        path: React.PropTypes.string,
-        value: React.PropTypes.string,
-        className: React.PropTypes.any
+        onChange: _react2['default'].PropTypes.func,
+        onFocusChange: _react2['default'].PropTypes.func,
+        options: _react2['default'].PropTypes.object,
+        path: _react2['default'].PropTypes.string,
+        value: _react2['default'].PropTypes.string,
+        className: _react2['default'].PropTypes.any
     },
 
     getInitialState: function getInitialState() {
@@ -31754,7 +31812,7 @@ var CodeMirror = React.createClass({
 
     componentDidMount: function componentDidMount() {
         var textareaNode = this.refs.textarea;
-        this.codeMirror = CM.fromTextArea(textareaNode, this.props.options);
+        this.codeMirror = _codemirror2['default'].fromTextArea(textareaNode, this.props.options);
         this.codeMirror.on('change', this.codemirrorValueChanged);
         this.codeMirror.on('focus', this.focusChanged.bind(this, true));
         this.codeMirror.on('blur', this.focusChanged.bind(this, false));
@@ -31806,59 +31864,80 @@ var CodeMirror = React.createClass({
     },
 
     render: function render() {
-        var editorClassName = className('ReactCodeMirror', this.state.isFocused ? 'ReactCodeMirror--focused' : null, this.props.className);
+        var editorClassName = (0, _classNames2['default'])('ReactCodeMirror', this.state.isFocused ? 'ReactCodeMirror--focused' : null, this.props.className);
 
-        return React.createElement(
+        return _react2['default'].createElement(
             'div',
             { className: editorClassName },
-            React.createElement('textarea', { ref: 'textarea', name: this.props.path })
+            _react2['default'].createElement('textarea', { ref: 'textarea', name: this.props.path })
         );
     }
 
 });
 
-module.exports = CodeMirror;
+exports['default'] = CodeMirror;
+module.exports = exports['default'];
 
-},{"classnames":1,"codemirror":5,"react":168}],173:[function(require,module,exports){
+},{"classNames":1,"codemirror":5,"react":168}],173:[function(require,module,exports){
 'use strict';
 
-var React = require('react');
-var CodeEditor = require('./CodeEditor.jsx');
+Object.defineProperty(exports, '__esModule', {
+    value: true
+});
 
-var MainLayout = React.createClass({
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _CodeEditorJsx = require('./CodeEditor.jsx');
+
+var _CodeEditorJsx2 = _interopRequireDefault(_CodeEditorJsx);
+
+var MainLayout = _react2['default'].createClass({
     displayName: 'MainLayout',
 
     render: function render() {
-        return React.createElement(CodeEditor, null);
+        return _react2['default'].createElement(_CodeEditorJsx2['default'], null);
     }
 });
 
-module.exports = MainLayout;
+exports['default'] = MainLayout;
+module.exports = exports['default'];
 
 },{"./CodeEditor.jsx":171,"react":168}],174:[function(require,module,exports){
 "use strict";
 
-var React = require('react');
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 
-var Footer = React.createClass({
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var Footer = _react2["default"].createClass({
     displayName: "Footer",
 
     render: function render() {
-        return React.createElement(
+        return _react2["default"].createElement(
             "div",
             { className: "navbar navbar-default navbar-fixed-bottom" },
-            React.createElement(
+            _react2["default"].createElement(
                 "div",
                 { className: "container" },
-                React.createElement(
+                _react2["default"].createElement(
                     "p",
                     { className: "navbar-text pull-left" },
                     "2015 - Site Built By Nishant Usapkar and Ashish Sharma"
                 ),
-                React.createElement(
+                _react2["default"].createElement(
                     "a",
                     { href: "http://youtu.be/zJahlKPCL9g", className: "navbar-btn btn-danger btn pull-right" },
-                    React.createElement("span", { className: "glyphicon glyphicon-star" }),
+                    _react2["default"].createElement("span", { className: "glyphicon glyphicon-star" }),
                     "Subscribe on YouTube"
                 )
             )
@@ -31866,7 +31945,8 @@ var Footer = React.createClass({
     }
 });
 
-module.exports = Footer;
+exports["default"] = Footer;
+module.exports = exports["default"];
 
 },{"react":168}],175:[function(require,module,exports){
 "use strict";

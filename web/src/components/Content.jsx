@@ -1,7 +1,7 @@
-var React = require('react');
-var CodeEditor = require('./CodeEditor.jsx');
+import React from 'react';
+import CodeEditor from './CodeEditor.jsx';
 
-var MainLayout = React.createClass({
+const MainLayout = React.createClass({
     render: function () {
         return (
             <CodeEditor/>
@@ -9,4 +9,4 @@ var MainLayout = React.createClass({
     }
 });
 
-module.exports = MainLayout;
+export default MainLayout;

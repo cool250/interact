@@ -1,9 +1,9 @@
-var CM = require('codemirror');
-var React = require('react');
-var className = require('classnames');
+import React from 'react';
+import CM from 'codemirror';
+import className from 'classNames';
 
 
-var CodeMirror = React.createClass({
+const CodeMirror = React.createClass({
 
     propTypes: {
         onChange: React.PropTypes.func,
@@ -89,4 +89,4 @@ var CodeMirror = React.createClass({
 
 });
 
-module.exports = CodeMirror;
+export default CodeMirror;

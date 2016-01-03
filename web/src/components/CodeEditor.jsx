@@ -1,18 +1,16 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var Codemirror = require('./Codemirror.jsx');
+import React from 'react';
+import Codemirror from './Codemirror.jsx';
 
-require('codemirror/mode/javascript/javascript');
-require('codemirror/mode/xml/xml');
-require('codemirror/mode/clike/clike');
-require('codemirror/mode/markdown/markdown');
-
-require('codemirror/addon/hint/show-hint');
-require('codemirror/addon/hint/xml-hint');
-require('codemirror/addon/hint/javascript-hint');
+import 'codemirror/mode/javascript/javascript';
+import 'codemirror/mode/xml/xml';
+import 'codemirror/mode/clike/clike';
+import 'codemirror/mode/markdown/markdown';
+import 'codemirror/addon/hint/show-hint';
+import 'codemirror/addon/hint/xml-hint';
+import 'codemirror/addon/hint/javascript-hint';
 
 
-var CodeEditor = React.createClass({
+const CodeEditor = React.createClass({
 
     getInitialState () {
         return {
@@ -75,4 +73,4 @@ var CodeEditor = React.createClass({
     }
 });
 
-module.exports = CodeEditor;
+export default CodeEditor;

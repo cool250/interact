@@ -1,9 +1,11 @@
-var React = require('react');
-var NavigationBar = require('./Navbar.jsx');
-var Content = require('./Content.jsx');
-var Footer = require('./Footer.jsx');
+import React from 'react';
 
-var AppLayout = React.createClass({
+import NavigationBar from './NavBar.jsx';
+import Content from './Content.jsx';
+import Footer from './Footer.jsx';
+
+
+const AppLayout = React.createClass({
     render: function () {
         return (
             <div className="Layout">
@@ -15,4 +17,4 @@ var AppLayout = React.createClass({
     }
 });
 
-module.exports = AppLayout;
+export default AppLayout;

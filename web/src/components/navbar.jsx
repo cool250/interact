@@ -13,6 +13,7 @@ var NavigationBar = React.createClass({
                     <div className="navbar-right">
                         <ul className="nav navbar-nav">
                             <li className="active"><a href="#">Home</a></li>
+                            <li><a href="#">Join</a></li>
                             <li><a href="#">Create an interview</a></li>
                         </ul>
                     </div>

@@ -31913,6 +31913,15 @@ var NavigationBar = React.createClass({
                             React.createElement(
                                 "a",
                                 { href: "#" },
+                                "Join"
+                            )
+                        ),
+                        React.createElement(
+                            "li",
+                            null,
+                            React.createElement(
+                                "a",
+                                { href: "#" },
                                 "Create an interview"
                             )
                         )

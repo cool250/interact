@@ -2,7 +2,9 @@
 Interactive interview app 
 
 # Run below command under interact folder
-node server.js
+npm run watch - For Development
+npm run build - For building HTML assets before deploy to server
+npm run start - For starting express application.
 
 # Access the start page using below URL
 http://localhost:3000/web/index.html

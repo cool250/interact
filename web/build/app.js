@@ -31649,7 +31649,15 @@ Object.defineProperty(exports, '__esModule', {
     value: true
 });
 
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var _react = require('react');
 
@@ -31673,121 +31681,134 @@ require('codemirror/addon/hint/xml-hint');
 
 require('codemirror/addon/hint/javascript-hint');
 
-var CodeEditor = _react2['default'].createClass({
-    displayName: 'CodeEditor',
+var CodeEditor = (function (_React$Component) {
+    _inherits(CodeEditor, _React$Component);
 
-    getInitialState: function getInitialState() {
-        return {
+    function CodeEditor() {
+        _classCallCheck(this, CodeEditor);
+
+        _get(Object.getPrototypeOf(CodeEditor.prototype), 'constructor', this).call(this);
+        this.render = this.render.bind(this);
+        this.state = {
             readOnly: false,
-            mode: 'markdown',
-            extraKeys: { "Ctrl-Space": "autocomplete" }
+            mode: 'markdown'
         };
-    },
+    }
 
-    changeMode: function changeMode(e) {
-        var mode = e.target.value;
-        this.setState({
-            mode: mode
-        });
-    },
+    _createClass(CodeEditor, [{
+        key: 'changeMode',
+        value: function changeMode(e) {
+            var mode = e.target.value;
+            this.setState({
+                mode: mode
+            });
+        }
+    }, {
+        key: 'toggleReadOnly',
+        value: function toggleReadOnly() {
+            var _this = this;
 
-    toggleReadOnly: function toggleReadOnly() {
-        var _this = this;
-
-        this.setState({
-            readOnly: !this.state.readOnly
-        }, function () {
-            return _this.refs.editor.focus();
-        });
-    },
-
-    interact: function interact(cm) {
-        console.log(cm.getValue());
-    },
-
-    render: function render() {
-        var options = {
-            lineNumbers: true,
-            readOnly: this.state.readOnly,
-            extraKeys: { "Ctrl-Space": "autocomplete" },
-            mode: this.state.mode
-        };
-        return _react2['default'].createElement(
-            'div',
-            null,
-            _react2['default'].createElement(
+            this.setState({
+                readOnly: !this.state.readOnly
+            }, function () {
+                return _this.refs.editor.focus();
+            });
+        }
+    }, {
+        key: 'interact',
+        value: function interact(cm) {
+            console.log(cm.getValue());
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var options = {
+                lineNumbers: true,
+                readOnly: this.state.readOnly,
+                extraKeys: { "Ctrl-Space": "autocomplete" },
+                mode: this.state.mode
+            };
+            return _react2['default'].createElement(
                 'div',
-                { className: 'row' },
-                _react2['default'].createElement(
-                    'label',
-                    { className: 'col-sm-2', htmlFor: 'markup' },
-                    'Select Language:'
-                ),
+                null,
                 _react2['default'].createElement(
                     'div',
-                    { className: 'col-sm-2' },
+                    { className: 'row' },
                     _react2['default'].createElement(
-                        'select',
-                        { className: 'form-control', onChange: this.changeMode, value: this.state.mode, id: 'markup' },
+                        'label',
+                        { className: 'col-sm-2', htmlFor: 'markup' },
+                        'Select Language:'
+                    ),
+                    _react2['default'].createElement(
+                        'div',
+                        { className: 'col-sm-2' },
                         _react2['default'].createElement(
-                            'option',
-                            { value: 'markdown' },
-                            'Markdown'
-                        ),
+                            'select',
+                            { className: 'form-control', onChange: this.changeMode, value: this.state.mode, id: 'markup' },
+                            _react2['default'].createElement(
+                                'option',
+                                { value: 'markdown' },
+                                'Markdown'
+                            ),
+                            _react2['default'].createElement(
+                                'option',
+                                { value: 'javascript' },
+                                'JavaScript'
+                            ),
+                            _react2['default'].createElement(
+                                'option',
+                                { value: 'text/x-java' },
+                                'Java'
+                            ),
+                            _react2['default'].createElement(
+                                'option',
+                                { value: 'text/x-objectivec' },
+                                'Objective C'
+                            )
+                        )
+                    ),
+                    _react2['default'].createElement(
+                        'div',
+                        { className: 'col-sm-4' },
                         _react2['default'].createElement(
-                            'option',
-                            { value: 'javascript' },
-                            'JavaScript'
-                        ),
-                        _react2['default'].createElement(
-                            'option',
-                            { value: 'text/x-java' },
-                            'Java'
-                        ),
-                        _react2['default'].createElement(
-                            'option',
-                            { value: 'text/x-objectivec' },
-                            'Objective C'
+                            'p',
+                            { className: 'text-info' },
+                            'Press ',
+                            _react2['default'].createElement(
+                                'strong',
+                                null,
+                                'ctrl-space'
+                            ),
+                            ' to activate completion.'
                         )
                     )
                 ),
                 _react2['default'].createElement(
                     'div',
-                    { className: 'col-sm-4' },
-                    _react2['default'].createElement(
-                        'p',
-                        { className: 'text-info' },
-                        'Press ',
-                        _react2['default'].createElement(
-                            'strong',
-                            null,
-                            'ctrl-space'
-                        ),
-                        ' to activate completion.'
-                    )
-                )
-            ),
-            _react2['default'].createElement(
-                'div',
-                { className: 'row' },
-                _react2['default'].createElement(_CodemirrorJsx2['default'], { className: 'col-sm-8', ref: 'editor', options: options, interact: this.interact })
-            ),
-            _react2['default'].createElement(
-                'div',
-                { className: 'row' },
+                    { className: 'row' },
+                    _react2['default'].createElement(_CodemirrorJsx2['default'], { className: 'col-sm-8', ref: 'editor', options: options, interact: this.interact })
+                ),
                 _react2['default'].createElement(
                     'div',
-                    { className: 'col-sm-8' },
+                    { className: 'row' },
                     _react2['default'].createElement(
-                        'button',
-                        { className: 'btn btn-primary pull-right', value: 'Submit Solution' },
-                        'Submit Solution'
+                        'div',
+                        { className: 'col-sm-8' },
+                        _react2['default'].createElement(
+                            'button',
+                            { className: 'btn btn-primary pull-right', value: 'Submit Solution' },
+                            'Submit Solution'
+                        )
                     )
                 )
-            )
-        );
-    }
-});
+            );
+        }
+    }]);
+
+    return CodeEditor;
+})(_react2['default'].Component);
+
+;
 
 exports['default'] = CodeEditor;
 module.exports = exports['default'];
@@ -31799,7 +31820,15 @@ Object.defineProperty(exports, '__esModule', {
     value: true
 });
 
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var _react = require('react');
 
@@ -31813,88 +31842,94 @@ var _classNames = require('classNames');
 
 var _classNames2 = _interopRequireDefault(_classNames);
 
-var CodeMirror = _react2['default'].createClass({
-    displayName: 'CodeMirror',
+var CodeMirror = (function (_React$Component) {
+    _inherits(CodeMirror, _React$Component);
 
-    propTypes: {
-        onChange: _react2['default'].PropTypes.func,
-        onFocusChange: _react2['default'].PropTypes.func,
-        options: _react2['default'].PropTypes.object,
-        path: _react2['default'].PropTypes.string,
-        value: _react2['default'].PropTypes.string,
-        className: _react2['default'].PropTypes.any
-    },
+    function CodeMirror() {
+        _classCallCheck(this, CodeMirror);
 
-    getInitialState: function getInitialState() {
-        return {
-            isFocused: false
-        };
-    },
+        _get(Object.getPrototypeOf(CodeMirror.prototype), 'constructor', this).call(this);
+        this.render = this.render.bind(this);
+        this.state = { isFocused: false };
+    }
 
-    componentDidMount: function componentDidMount() {
-        var textareaNode = this.refs.textarea;
-        this.codeMirror = _codemirror2['default'].fromTextArea(textareaNode, this.props.options);
-        this.codeMirror.on('change', this.codemirrorValueChanged);
-        this.codeMirror.on('focus', this.focusChanged.bind(this, true));
-        this.codeMirror.on('blur', this.focusChanged.bind(this, false));
-        this._currentCodemirrorValue = this.props.defaultValue || this.props.value || '';
-        this.codeMirror.setValue(this._currentCodemirrorValue);
-    },
-
-    componentWillUnmount: function componentWillUnmount() {
-        // todo: is there a lighter-weight way to remove the cm instance?
-        if (this.codeMirror) {
-            this.codeMirror.toTextArea();
+    _createClass(CodeMirror, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var textareaNode = this.refs.textarea;
+            this.codeMirror = _codemirror2['default'].fromTextArea(textareaNode, this.props.options);
+            this.codeMirror.on('change', this.codemirrorValueChanged);
+            this.codeMirror.on('focus', this.focusChanged.bind(this, true));
+            this.codeMirror.on('blur', this.focusChanged.bind(this, false));
+            this._currentCodemirrorValue = this.props.defaultValue || this.props.value || '';
+            this.codeMirror.setValue(this._currentCodemirrorValue);
         }
-    },
-
-    componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
-        if (this.codeMirror && nextProps.value !== undefined && this._currentCodemirrorValue !== nextProps.value) {
-            this.codeMirror.setValue(nextProps.value);
+    }, {
+        key: 'componentWillUnmount',
+        value: function componentWillUnmount() {
+            // todo: is there a lighter-weight way to remove the cm instance?
+            if (this.codeMirror) {
+                this.codeMirror.toTextArea();
+            }
         }
-        if (typeof nextProps.options === 'object') {
-            for (var optionName in nextProps.options) {
-                if (nextProps.options.hasOwnProperty(optionName)) {
-                    this.codeMirror.setOption(optionName, nextProps.options[optionName]);
+    }, {
+        key: 'componentWillReceiveProps',
+        value: function componentWillReceiveProps(nextProps) {
+            if (this.codeMirror && nextProps.value !== undefined && this._currentCodemirrorValue !== nextProps.value) {
+                this.codeMirror.setValue(nextProps.value);
+            }
+            if (typeof nextProps.options === 'object') {
+                for (var optionName in nextProps.options) {
+                    if (nextProps.options.hasOwnProperty(optionName)) {
+                        this.codeMirror.setOption(optionName, nextProps.options[optionName]);
+                    }
                 }
             }
         }
-    },
-
-    getCodeMirror: function getCodeMirror() {
-        return this.codeMirror;
-    },
-
-    focus: function focus() {
-        if (this.codeMirror) {
-            this.codeMirror.focus();
+    }, {
+        key: 'getCodeMirror',
+        value: function getCodeMirror() {
+            return this.codeMirror;
         }
-    },
+    }, {
+        key: 'focus',
+        value: function focus() {
+            if (this.codeMirror) {
+                this.codeMirror.focus();
+            }
+        }
+    }, {
+        key: 'focusChanged',
+        value: function focusChanged(focused) {
+            this.setState({
+                isFocused: focused
+            });
+            this.props.onFocusChange && this.props.onFocusChange(focused);
+        }
+    }, {
+        key: 'codemirrorValueChanged',
+        value: function codemirrorValueChanged(doc, change) {
+            var newValue = doc.getValue();
+            this._currentCodemirrorValue = newValue;
+            this.props.onChange && this.props.onChange(newValue);
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var editorClassName = (0, _classNames2['default'])('ReactCodeMirror', this.state.isFocused ? 'ReactCodeMirror--focused' : null, this.props.className);
 
-    focusChanged: function focusChanged(focused) {
-        this.setState({
-            isFocused: focused
-        });
-        this.props.onFocusChange && this.props.onFocusChange(focused);
-    },
+            return _react2['default'].createElement(
+                'div',
+                { className: editorClassName },
+                _react2['default'].createElement('textarea', { ref: 'textarea', name: this.props.path })
+            );
+        }
+    }]);
 
-    codemirrorValueChanged: function codemirrorValueChanged(doc, change) {
-        var newValue = doc.getValue();
-        this._currentCodemirrorValue = newValue;
-        this.props.onChange && this.props.onChange(newValue);
-    },
+    return CodeMirror;
+})(_react2['default'].Component);
 
-    render: function render() {
-        var editorClassName = (0, _classNames2['default'])('ReactCodeMirror', this.state.isFocused ? 'ReactCodeMirror--focused' : null, this.props.className);
-
-        return _react2['default'].createElement(
-            'div',
-            { className: editorClassName },
-            _react2['default'].createElement('textarea', { ref: 'textarea', name: this.props.path })
-        );
-    }
-
-});
+;
 
 exports['default'] = CodeMirror;
 module.exports = exports['default'];

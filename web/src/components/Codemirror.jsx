@@ -3,7 +3,7 @@ import CM from 'codemirror';
 import className from 'classNames';
 
 
-const CodeMirror = React.createClass({
+class CodeMirror extends React.Component {
 
     propTypes: {
         onChange: React.PropTypes.func,
@@ -11,14 +11,14 @@ const CodeMirror = React.createClass({
         options: React.PropTypes.object,
         path: React.PropTypes.string,
         value: React.PropTypes.string,
-        className: React.PropTypes.any,
-    },
+        className: React.PropTypes.any
+    }
 
-    getInitialState () {
-        return {
-            isFocused: false
-        };
-    },
+    constructor() {
+        super();
+        this.render = this.render.bind(this);
+        this.state = {isFocused: false};
+    }
 
     componentDidMount () {
         var textareaNode = this.refs.textarea;
@@ -28,14 +28,14 @@ const CodeMirror = React.createClass({
         this.codeMirror.on('blur', this.focusChanged.bind(this, false));
         this._currentCodemirrorValue = this.props.defaultValue || this.props.value || '';
         this.codeMirror.setValue(this._currentCodemirrorValue);
-    },
+    }
 
     componentWillUnmount () {
         // todo: is there a lighter-weight way to remove the cm instance?
         if (this.codeMirror) {
             this.codeMirror.toTextArea();
         }
-    },
+    }
 
     componentWillReceiveProps (nextProps) {
         if (this.codeMirror && nextProps.value !== undefined && this._currentCodemirrorValue !== nextProps.value) {
@@ -48,30 +48,30 @@ const CodeMirror = React.createClass({
                 }
             }
         }
-    },
+    }
 
     getCodeMirror () {
         return this.codeMirror;
-    },
+    }
 
     focus () {
         if (this.codeMirror) {
             this.codeMirror.focus();
         }
-    },
+    }
 
     focusChanged (focused) {
         this.setState({
             isFocused: focused
         });
         this.props.onFocusChange && this.props.onFocusChange(focused);
-    },
+    }
 
     codemirrorValueChanged (doc, change) {
         var newValue = doc.getValue();
         this._currentCodemirrorValue = newValue;
         this.props.onChange && this.props.onChange(newValue);
-    },
+    }
 
     render () {
         var editorClassName = className(
@@ -87,6 +87,6 @@ const CodeMirror = React.createClass({
         );
     }
 
-});
+};
 
 export default CodeMirror;

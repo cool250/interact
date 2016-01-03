@@ -9,33 +9,33 @@ import 'codemirror/addon/hint/show-hint';
 import 'codemirror/addon/hint/xml-hint';
 import 'codemirror/addon/hint/javascript-hint';
 
+class CodeEditor extends React.Component {
 
-const CodeEditor = React.createClass({
-
-    getInitialState () {
-        return {
+    constructor() {
+        super();
+        this.render = this.render.bind(this);
+        this.state = {
             readOnly: false,
-            mode: 'markdown',
-            extraKeys: {"Ctrl-Space": "autocomplete"}
+            mode: 'markdown'
         };
-    },
+    }
 
     changeMode (e) {
         var mode = e.target.value;
         this.setState({
-            mode: mode,
+            mode: mode
         });
-    },
+    }
 
     toggleReadOnly () {
         this.setState({
             readOnly: !this.state.readOnly
         }, () => this.refs.editor.focus());
-    },
+    }
 
     interact(cm){
         console.log(cm.getValue());
-    },
+    }
 
     render () {
         var options = {
@@ -71,6 +71,6 @@ const CodeEditor = React.createClass({
             </div>
         );
     }
-});
+};
 
 export default CodeEditor;

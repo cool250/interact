@@ -1,5 +1,5 @@
 import React from 'react';
-import Codemirror from './Codemirror.jsx';
+import CodeMirror from './CodeMirror.jsx';
 
 import 'codemirror/mode/javascript/javascript';
 import 'codemirror/mode/xml/xml';
@@ -61,7 +61,7 @@ class CodeEditor extends React.Component {
                     </div>
                 </div>
                 <div className="row">
-                    <Codemirror className="col-sm-8" ref="editor" options={options} interact={this.interact}/>
+                    <CodeMirror className="col-sm-8" ref="editor" options={options} interact={this.interact}/>
                 </div>
                 <div className="row">
                     <div className="col-sm-8">

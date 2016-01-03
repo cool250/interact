@@ -31663,9 +31663,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _CodemirrorJsx = require('./Codemirror.jsx');
+var _CodeMirrorJsx = require('./CodeMirror.jsx');
 
-var _CodemirrorJsx2 = _interopRequireDefault(_CodemirrorJsx);
+var _CodeMirrorJsx2 = _interopRequireDefault(_CodeMirrorJsx);
 
 require('codemirror/mode/javascript/javascript');
 
@@ -31786,7 +31786,7 @@ var CodeEditor = (function (_React$Component) {
                 _react2['default'].createElement(
                     'div',
                     { className: 'row' },
-                    _react2['default'].createElement(_CodemirrorJsx2['default'], { className: 'col-sm-8', ref: 'editor', options: options, interact: this.interact })
+                    _react2['default'].createElement(_CodeMirrorJsx2['default'], { className: 'col-sm-8', ref: 'editor', options: options, interact: this.interact })
                 ),
                 _react2['default'].createElement(
                     'div',
@@ -31813,7 +31813,7 @@ var CodeEditor = (function (_React$Component) {
 exports['default'] = CodeEditor;
 module.exports = exports['default'];
 
-},{"./Codemirror.jsx":172,"codemirror/addon/hint/javascript-hint":2,"codemirror/addon/hint/show-hint":3,"codemirror/addon/hint/xml-hint":4,"codemirror/mode/clike/clike":6,"codemirror/mode/javascript/javascript":7,"codemirror/mode/markdown/markdown":8,"codemirror/mode/xml/xml":10,"react":168}],172:[function(require,module,exports){
+},{"./CodeMirror.jsx":172,"codemirror/addon/hint/javascript-hint":2,"codemirror/addon/hint/show-hint":3,"codemirror/addon/hint/xml-hint":4,"codemirror/mode/clike/clike":6,"codemirror/mode/javascript/javascript":7,"codemirror/mode/markdown/markdown":8,"codemirror/mode/xml/xml":10,"react":168}],172:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -32047,67 +32047,97 @@ module.exports = exports["default"];
 },{"react":168}],175:[function(require,module,exports){
 "use strict";
 
-var React = require('react');
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 
-var NavigationBar = React.createClass({
-    displayName: "NavigationBar",
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-    render: function render() {
-        return React.createElement(
-            "nav",
-            { className: "navbar navbar-inverse", role: "navigation" },
-            React.createElement(
-                "div",
-                { className: "container-fluid" },
-                React.createElement(
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var NavigationBar = (function (_React$Component) {
+    _inherits(NavigationBar, _React$Component);
+
+    function NavigationBar() {
+        _classCallCheck(this, NavigationBar);
+
+        _get(Object.getPrototypeOf(NavigationBar.prototype), "constructor", this).apply(this, arguments);
+    }
+
+    _createClass(NavigationBar, [{
+        key: "render",
+        value: function render() {
+            return _react2["default"].createElement(
+                "nav",
+                { className: "navbar navbar-inverse", role: "navigation" },
+                _react2["default"].createElement(
                     "div",
-                    { className: "navbar-header" },
-                    React.createElement(
-                        "a",
-                        { className: "navbar-brand", href: "#" },
-                        React.createElement("img", { className: "brandImage", alt: "Brand", src: "img/hired.jpeg" })
-                    )
-                ),
-                React.createElement(
-                    "div",
-                    { className: "navbar-right" },
-                    React.createElement(
-                        "ul",
-                        { className: "nav navbar-nav" },
-                        React.createElement(
-                            "li",
-                            { className: "active" },
-                            React.createElement(
-                                "a",
-                                { href: "#" },
-                                "Home"
-                            )
-                        ),
-                        React.createElement(
-                            "li",
-                            null,
-                            React.createElement(
-                                "a",
-                                { href: "#" },
-                                "Join"
-                            )
-                        ),
-                        React.createElement(
-                            "li",
-                            null,
-                            React.createElement(
-                                "a",
-                                { href: "#" },
-                                "Create an interview"
+                    { className: "container-fluid" },
+                    _react2["default"].createElement(
+                        "div",
+                        { className: "navbar-header" },
+                        _react2["default"].createElement(
+                            "a",
+                            { className: "navbar-brand", href: "#" },
+                            _react2["default"].createElement("img", { className: "brandImage", alt: "Brand", src: "img/hired.jpeg" })
+                        )
+                    ),
+                    _react2["default"].createElement(
+                        "div",
+                        { className: "navbar-right" },
+                        _react2["default"].createElement(
+                            "ul",
+                            { className: "nav navbar-nav" },
+                            _react2["default"].createElement(
+                                "li",
+                                { className: "active" },
+                                _react2["default"].createElement(
+                                    "a",
+                                    { href: "#" },
+                                    "Home"
+                                )
+                            ),
+                            _react2["default"].createElement(
+                                "li",
+                                null,
+                                _react2["default"].createElement(
+                                    "a",
+                                    { href: "#" },
+                                    "Join"
+                                )
+                            ),
+                            _react2["default"].createElement(
+                                "li",
+                                null,
+                                _react2["default"].createElement(
+                                    "a",
+                                    { href: "#" },
+                                    "Create an interview"
+                                )
                             )
                         )
                     )
                 )
-            )
-        );
-    }
-});
+            );
+        }
+    }]);
 
-module.exports = NavigationBar;
+    return NavigationBar;
+})(_react2["default"].Component);
+
+;
+
+exports["default"] = NavigationBar;
+module.exports = exports["default"];
 
 },{"react":168}]},{},[169]);

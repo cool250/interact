@@ -7,23 +7,31 @@ require('codemirror/mode/xml/xml');
 require('codemirror/mode/clike/clike');
 require('codemirror/mode/markdown/markdown');
 
+require('codemirror/addon/hint/show-hint');
+require('codemirror/addon/hint/xml-hint');
+require('codemirror/addon/hint/javascript-hint');
+
 var defaults = {
 	
 };
 
 var CodeEditor = React.createClass({
+
 	getInitialState () {
 		return {
 			code: defaults.markdown,
 			readOnly: false,
 			mode: 'markdown',
+			extraKeys: {"Ctrl-Space": "autocomplete"}
 		};
 	},
+
 	updateCode (newCode) {
 		this.setState({
 			code: newCode
 		});
 	},
+
 	changeMode (e) {
 		var mode = e.target.value;
 		this.setState({
@@ -31,18 +39,22 @@ var CodeEditor = React.createClass({
 			code: defaults[mode]
 		});
 	},
+
 	toggleReadOnly () {
 		this.setState({
 			readOnly: !this.state.readOnly
 		}, () => this.refs.editor.focus());
 	},
+
 	interact(cm){
 		console.log(cm.getValue());
 	},
+
 	render () {
 		var options = {
 			lineNumbers: true,
 			readOnly: this.state.readOnly,
+			extraKeys: {"Ctrl-Space": "autocomplete"},
 			mode: this.state.mode
 		};
 		return (
@@ -50,7 +62,7 @@ var CodeEditor = React.createClass({
 				<form role="form" className="row">  	
 					<div className="form-group">
 						<label className="col-sm-2" htmlFor="markup">Select Language:</label>
-						<div className="col-sm-10">
+						<div className="col-sm-2">
 							<select className="input-large" onChange={this.changeMode} value={this.state.mode} id="markup">
 								<option value="markdown">Markdown</option>
 								<option value="javascript">JavaScript</option>
@@ -58,9 +70,12 @@ var CodeEditor = React.createClass({
 								<option value="text/x-objectivec">Objective C</option>				
 							</select>
 						</div>
+						<div className="col-sm-5">
+							<p>Press <strong>ctrl-space</strong> to activate completion.</p>
+						</div>
 					</div>					
 				</form>
-				<div className="row  ">
+				<div className="row">
 					<Codemirror ref="editor" value={this.state.code} onChange={this.updateCode} options={options} interact={this.interact}/>
 				</div>
 				<div className="row">

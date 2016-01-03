@@ -19,6 +19,7 @@ var CodeMirror = React.createClass({
 			isFocused: false
 		};
 	},
+
 	componentDidMount () {
 		var textareaNode = this.refs.textarea;
 		this.codeMirror = CM.fromTextArea(textareaNode, this.props.options);
@@ -28,6 +29,7 @@ var CodeMirror = React.createClass({
 		this._currentCodemirrorValue = this.props.defaultValue || this.props.value || '';
 		this.codeMirror.setValue(this._currentCodemirrorValue);
 	},
+
 	componentWillUnmount () {
 		// todo: is there a lighter-weight way to remove the cm instance?
 		if (this.codeMirror) {
@@ -80,7 +82,7 @@ var CodeMirror = React.createClass({
 
 		return (
 			<div className={editorClassName}>
-				<textarea ref="textarea" name={this.props.path} defaultValue={''} autoComplete="off" />
+				<textarea ref="textarea" name={this.props.path} />
 			</div>
 		);
 	}

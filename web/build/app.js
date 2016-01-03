@@ -31895,15 +31895,15 @@ var _CodeEditorJsx = require('./CodeEditor.jsx');
 
 var _CodeEditorJsx2 = _interopRequireDefault(_CodeEditorJsx);
 
-var MainLayout = _react2['default'].createClass({
-    displayName: 'MainLayout',
+var Content = _react2['default'].createClass({
+    displayName: 'Content',
 
     render: function render() {
         return _react2['default'].createElement(_CodeEditorJsx2['default'], null);
     }
 });
 
-exports['default'] = MainLayout;
+exports['default'] = Content;
 module.exports = exports['default'];
 
 },{"./CodeEditor.jsx":171,"react":168}],174:[function(require,module,exports){

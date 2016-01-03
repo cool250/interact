@@ -1,7 +1,7 @@
 import React from 'react';
 import CodeEditor from './CodeEditor.jsx';
 
-const MainLayout = React.createClass({
+const Content = React.createClass({
     render: function () {
         return (
             <CodeEditor/>
@@ -9,4 +9,4 @@ const MainLayout = React.createClass({
     }
 });
 
-export default MainLayout;
+export default Content;

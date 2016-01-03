@@ -60,7 +60,7 @@ var CodeEditor = React.createClass({
 						</div>
 					</div>					
 				</form>
-				<div className="row">
+				<div className="row  ">
 					<Codemirror ref="editor" value={this.state.code} onChange={this.updateCode} options={options} interact={this.interact}/>
 				</div>
 				<div className="row">

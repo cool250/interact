@@ -1,46 +1,23 @@
 var React  = require('react');
-var BootStrap = require('bootstrap');
-var ReactBootstrap = require('react-bootstrap');
-
-var Navbar = ReactBootstrap.Navbar;
-var NavItem = ReactBootstrap.NavItem;
-var MenuItem = ReactBootstrap.MenuItem;
-var Nav = ReactBootstrap.Nav;
-var NavDropdown = ReactBootstrap.NavDropdown;
-
-const navbarInstance = (
-  <Navbar inverse>
-    <Navbar.Header>
-      <Navbar.Brand>
-        <a href="#">React-Bootstrap</a>
-      </Navbar.Brand>
-      <Navbar.Toggle />
-    </Navbar.Header>
-    <Navbar.Collapse>
-      <Nav>
-        <NavItem eventKey={1} href="#">Link</NavItem>
-        <NavItem eventKey={2} href="#">Link</NavItem>
-        <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
-          <MenuItem eventKey={3.1}>Action</MenuItem>
-          <MenuItem eventKey={3.2}>Another action</MenuItem>
-          <MenuItem eventKey={3.3}>Something else here</MenuItem>
-          <MenuItem divider />
-          <MenuItem eventKey={3.3}>Separated link</MenuItem>
-        </NavDropdown>
-      </Nav>
-      <Nav pullRight>
-        <NavItem eventKey={1} href="#">Link Left</NavItem>
-        <NavItem eventKey={2} href="#">Link Right</NavItem>
-      </Nav>
-    </Navbar.Collapse>
-  </Navbar>
-);
-
 
 var NavigationBar = React.createClass({
   render: function() {
     return (     
-      navbarInstance
+      <nav className="navbar navbar-inverse" role="navigation">
+        <div className="container-fluid">
+          <div className="navbar-header">
+            <a className="navbar-brand" href="#">
+              <img className="brandImage" alt="Brand" src="img/hired.jpeg"></img>
+            </a>
+          </div>
+          <div className="navbar-right">
+            <ul className="nav navbar-nav">
+              <li className="active"><a href="#">Home</a></li>
+              <li><a href="#">Create an interview</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
     )
   }
 });

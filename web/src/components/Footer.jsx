@@ -1,7 +1,8 @@
 import React from 'react';
 
-const Footer = React.createClass({
-    render: function () {
+class Footer extends React.Component {
+
+    render () {
         return (
             <div className="navbar navbar-default navbar-fixed-bottom">
                 <div className="container">
@@ -12,6 +13,6 @@ const Footer = React.createClass({
             </div>
         )
     }
-});
+};
 
 export default Footer;

@@ -1,7 +1,8 @@
 import React from 'react';
 
-const NavigationBar = React.createClass({
-    render: function () {
+class NavigationBar extends React.Component {
+
+    render() {
         return (
             <nav className="navbar navbar-inverse" role="navigation">
                 <div className="container-fluid">
@@ -21,6 +22,6 @@ const NavigationBar = React.createClass({
             </nav>
         )
     }
-});
+};
 
 export default NavigationBar;

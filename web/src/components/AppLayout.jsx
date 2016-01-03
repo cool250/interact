@@ -5,8 +5,9 @@ import Content from './Content.jsx';
 import Footer from './Footer.jsx';
 
 
-const AppLayout = React.createClass({
-    render: function () {
+class AppLayout extends React.Component {
+
+    render () {
         return (
             <div className="Layout">
                 <NavigationBar/>
@@ -15,6 +16,6 @@ const AppLayout = React.createClass({
             </div>
         )
     }
-});
+};
 
 export default AppLayout;

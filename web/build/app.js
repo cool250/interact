@@ -31586,7 +31586,15 @@ Object.defineProperty(exports, '__esModule', {
     value: true
 });
 
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var _react = require('react');
 
@@ -31604,19 +31612,32 @@ var _FooterJsx = require('./Footer.jsx');
 
 var _FooterJsx2 = _interopRequireDefault(_FooterJsx);
 
-var AppLayout = _react2['default'].createClass({
-    displayName: 'AppLayout',
+var AppLayout = (function (_React$Component) {
+    _inherits(AppLayout, _React$Component);
 
-    render: function render() {
-        return _react2['default'].createElement(
-            'div',
-            { className: 'Layout' },
-            _react2['default'].createElement(_NavBarJsx2['default'], null),
-            _react2['default'].createElement(_ContentJsx2['default'], null),
-            _react2['default'].createElement(_FooterJsx2['default'], null)
-        );
+    function AppLayout() {
+        _classCallCheck(this, AppLayout);
+
+        _get(Object.getPrototypeOf(AppLayout.prototype), 'constructor', this).apply(this, arguments);
     }
-});
+
+    _createClass(AppLayout, [{
+        key: 'render',
+        value: function render() {
+            return _react2['default'].createElement(
+                'div',
+                { className: 'Layout' },
+                _react2['default'].createElement(_NavBarJsx2['default'], null),
+                _react2['default'].createElement(_ContentJsx2['default'], null),
+                _react2['default'].createElement(_FooterJsx2['default'], null)
+            );
+        }
+    }]);
+
+    return AppLayout;
+})(_react2['default'].Component);
+
+;
 
 exports['default'] = AppLayout;
 module.exports = exports['default'];
@@ -31885,7 +31906,15 @@ Object.defineProperty(exports, '__esModule', {
     value: true
 });
 
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var _react = require('react');
 
@@ -31895,13 +31924,24 @@ var _CodeEditorJsx = require('./CodeEditor.jsx');
 
 var _CodeEditorJsx2 = _interopRequireDefault(_CodeEditorJsx);
 
-var Content = _react2['default'].createClass({
-    displayName: 'Content',
+var Content = (function (_React$Component) {
+    _inherits(Content, _React$Component);
 
-    render: function render() {
-        return _react2['default'].createElement(_CodeEditorJsx2['default'], null);
+    function Content() {
+        _classCallCheck(this, Content);
+
+        _get(Object.getPrototypeOf(Content.prototype), 'constructor', this).apply(this, arguments);
     }
-});
+
+    _createClass(Content, [{
+        key: 'render',
+        value: function render() {
+            return _react2['default'].createElement(_CodeEditorJsx2['default'], null);
+        }
+    }]);
+
+    return Content;
+})(_react2['default'].Component);
 
 exports['default'] = Content;
 module.exports = exports['default'];
@@ -31913,37 +31953,58 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var Footer = _react2["default"].createClass({
-    displayName: "Footer",
+var Footer = (function (_React$Component) {
+    _inherits(Footer, _React$Component);
 
-    render: function render() {
-        return _react2["default"].createElement(
-            "div",
-            { className: "navbar navbar-default navbar-fixed-bottom" },
-            _react2["default"].createElement(
-                "div",
-                { className: "container" },
-                _react2["default"].createElement(
-                    "p",
-                    { className: "navbar-text pull-left" },
-                    "2015 - Site Built By Nishant Usapkar and Ashish Sharma"
-                ),
-                _react2["default"].createElement(
-                    "a",
-                    { href: "http://youtu.be/zJahlKPCL9g", className: "navbar-btn btn-danger btn pull-right" },
-                    _react2["default"].createElement("span", { className: "glyphicon glyphicon-star" }),
-                    "Subscribe on YouTube"
-                )
-            )
-        );
+    function Footer() {
+        _classCallCheck(this, Footer);
+
+        _get(Object.getPrototypeOf(Footer.prototype), "constructor", this).apply(this, arguments);
     }
-});
+
+    _createClass(Footer, [{
+        key: "render",
+        value: function render() {
+            return _react2["default"].createElement(
+                "div",
+                { className: "navbar navbar-default navbar-fixed-bottom" },
+                _react2["default"].createElement(
+                    "div",
+                    { className: "container" },
+                    _react2["default"].createElement(
+                        "p",
+                        { className: "navbar-text pull-left" },
+                        "2015 - Site Built By Nishant Usapkar and Ashish Sharma"
+                    ),
+                    _react2["default"].createElement(
+                        "a",
+                        { href: "http://youtu.be/zJahlKPCL9g", className: "navbar-btn btn-danger btn pull-right" },
+                        _react2["default"].createElement("span", { className: "glyphicon glyphicon-star" }),
+                        "Subscribe on YouTube"
+                    )
+                )
+            );
+        }
+    }]);
+
+    return Footer;
+})(_react2["default"].Component);
+
+;
 
 exports["default"] = Footer;
 module.exports = exports["default"];

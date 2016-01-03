@@ -1,8 +1,8 @@
 var React   = require('react');
 var ReactDOM = require('react-dom');
-var Layout = require('./components/Layout.jsx');
+var AppLayout = require('./components/AppLayout.jsx');
 
 ReactDOM.render(
-  <Layout/>,
+  <AppLayout/>,
   ReactApp
 );

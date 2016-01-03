@@ -31565,11 +31565,33 @@ module.exports = require('./lib/React');
 
 var React = require('react');
 var ReactDOM = require('react-dom');
-var Layout = require('./components/Layout.jsx');
+var AppLayout = require('./components/AppLayout.jsx');
 
-ReactDOM.render(React.createElement(Layout, null), ReactApp);
+ReactDOM.render(React.createElement(AppLayout, null), ReactApp);
 
-},{"./components/Layout.jsx":172,"react":168,"react-dom":39}],170:[function(require,module,exports){
+},{"./components/AppLayout.jsx":170,"react":168,"react-dom":39}],170:[function(require,module,exports){
+'use strict';
+
+var React = require('react');
+var NavigationBar = require('./Navbar.jsx');
+var Content = require('./Content.jsx');
+
+var AppLayout = React.createClass({
+  displayName: 'AppLayout',
+
+  render: function render() {
+    return React.createElement(
+      'div',
+      { className: 'Layout' },
+      React.createElement(NavigationBar, null),
+      React.createElement(Content, null)
+    );
+  }
+});
+
+module.exports = AppLayout;
+
+},{"./Content.jsx":173,"./Navbar.jsx":174,"react":168}],171:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -31653,7 +31675,7 @@ var CodeEditor = React.createClass({
 						{ className: 'col-sm-2' },
 						React.createElement(
 							'select',
-							{ className: 'input-large', onChange: this.changeMode, value: this.state.mode, id: 'markup' },
+							{ className: 'form-control', onChange: this.changeMode, value: this.state.mode, id: 'markup' },
 							React.createElement(
 								'option',
 								{ value: 'markdown' },
@@ -31713,7 +31735,7 @@ var CodeEditor = React.createClass({
 
 module.exports = CodeEditor;
 
-},{"./Codemirror.jsx":171,"codemirror/addon/hint/javascript-hint":2,"codemirror/addon/hint/show-hint":3,"codemirror/addon/hint/xml-hint":4,"codemirror/mode/clike/clike":6,"codemirror/mode/javascript/javascript":7,"codemirror/mode/markdown/markdown":8,"codemirror/mode/xml/xml":10,"react":168,"react-dom":39}],171:[function(require,module,exports){
+},{"./Codemirror.jsx":172,"codemirror/addon/hint/javascript-hint":2,"codemirror/addon/hint/show-hint":3,"codemirror/addon/hint/xml-hint":4,"codemirror/mode/clike/clike":6,"codemirror/mode/javascript/javascript":7,"codemirror/mode/markdown/markdown":8,"codemirror/mode/xml/xml":10,"react":168,"react-dom":39}],172:[function(require,module,exports){
 'use strict';
 
 var CM = require('codemirror');
@@ -31805,29 +31827,7 @@ var CodeMirror = React.createClass({
 
 module.exports = CodeMirror;
 
-},{"classnames":1,"codemirror":5,"react":168}],172:[function(require,module,exports){
-'use strict';
-
-var React = require('react');
-var NavigationBar = require('./Navbar.jsx');
-var MainLayout = require('./Main.jsx');
-
-var Layout = React.createClass({
-  displayName: 'Layout',
-
-  render: function render() {
-    return React.createElement(
-      'div',
-      { className: 'Layout' },
-      React.createElement(NavigationBar, null),
-      React.createElement(MainLayout, null)
-    );
-  }
-});
-
-module.exports = Layout;
-
-},{"./Main.jsx":173,"./Navbar.jsx":174,"react":168}],173:[function(require,module,exports){
+},{"classnames":1,"codemirror":5,"react":168}],173:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -31843,7 +31843,7 @@ var MainLayout = React.createClass({
 
 module.exports = MainLayout;
 
-},{"./CodeEditor.jsx":170,"react":168}],174:[function(require,module,exports){
+},{"./CodeEditor.jsx":171,"react":168}],174:[function(require,module,exports){
 "use strict";
 
 var React = require('react');

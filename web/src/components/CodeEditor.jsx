@@ -63,7 +63,7 @@ var CodeEditor = React.createClass({
 					<div className="form-group">
 						<label className="col-sm-2" htmlFor="markup">Select Language:</label>
 						<div className="col-sm-2">
-							<select className="input-large" onChange={this.changeMode} value={this.state.mode} id="markup">
+							<select className="form-control" onChange={this.changeMode} value={this.state.mode} id="markup">
 								<option value="markdown">Markdown</option>
 								<option value="javascript">JavaScript</option>
 								<option value="text/x-java">Java</option>

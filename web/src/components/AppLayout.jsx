@@ -1,6 +1,7 @@
 var React  = require('react');
 var NavigationBar = require('./Navbar.jsx');
 var Content = require('./Content.jsx');
+var Footer = require('./Footer.jsx');
 
 var AppLayout = React.createClass({
   render: function() {
@@ -8,6 +9,7 @@ var AppLayout = React.createClass({
       <div className="Layout">  
         <NavigationBar/>
         <Content/>
+        <Footer/>
       </div>
     )
   }

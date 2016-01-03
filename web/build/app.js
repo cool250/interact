@@ -31575,6 +31575,7 @@ ReactDOM.render(React.createElement(AppLayout, null), ReactApp);
 var React = require('react');
 var NavigationBar = require('./Navbar.jsx');
 var Content = require('./Content.jsx');
+var Footer = require('./Footer.jsx');
 
 var AppLayout = React.createClass({
   displayName: 'AppLayout',
@@ -31584,14 +31585,15 @@ var AppLayout = React.createClass({
       'div',
       { className: 'Layout' },
       React.createElement(NavigationBar, null),
-      React.createElement(Content, null)
+      React.createElement(Content, null),
+      React.createElement(Footer, null)
     );
   }
 });
 
 module.exports = AppLayout;
 
-},{"./Content.jsx":173,"./Navbar.jsx":174,"react":168}],171:[function(require,module,exports){
+},{"./Content.jsx":173,"./Footer.jsx":174,"./Navbar.jsx":175,"react":168}],171:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -31607,31 +31609,21 @@ require('codemirror/addon/hint/show-hint');
 require('codemirror/addon/hint/xml-hint');
 require('codemirror/addon/hint/javascript-hint');
 
-var defaults = {};
-
 var CodeEditor = React.createClass({
 	displayName: 'CodeEditor',
 
 	getInitialState: function getInitialState() {
 		return {
-			code: defaults.markdown,
 			readOnly: false,
 			mode: 'markdown',
 			extraKeys: { "Ctrl-Space": "autocomplete" }
 		};
 	},
 
-	updateCode: function updateCode(newCode) {
-		this.setState({
-			code: newCode
-		});
-	},
-
 	changeMode: function changeMode(e) {
 		var mode = e.target.value;
 		this.setState({
-			mode: mode,
-			code: defaults[mode]
+			mode: mode
 		});
 	},
 
@@ -31660,73 +31652,73 @@ var CodeEditor = React.createClass({
 			'div',
 			null,
 			React.createElement(
-				'form',
-				{ role: 'form', className: 'row' },
+				'div',
+				{ className: 'row' },
+				React.createElement(
+					'label',
+					{ className: 'col-sm-2', htmlFor: 'markup' },
+					'Select Language:'
+				),
 				React.createElement(
 					'div',
-					{ className: 'form-group' },
+					{ className: 'col-sm-2' },
 					React.createElement(
-						'label',
-						{ className: 'col-sm-2', htmlFor: 'markup' },
-						'Select Language:'
-					),
-					React.createElement(
-						'div',
-						{ className: 'col-sm-2' },
+						'select',
+						{ className: 'form-control', onChange: this.changeMode, value: this.state.mode, id: 'markup' },
 						React.createElement(
-							'select',
-							{ className: 'form-control', onChange: this.changeMode, value: this.state.mode, id: 'markup' },
-							React.createElement(
-								'option',
-								{ value: 'markdown' },
-								'Markdown'
-							),
-							React.createElement(
-								'option',
-								{ value: 'javascript' },
-								'JavaScript'
-							),
-							React.createElement(
-								'option',
-								{ value: 'text/x-java' },
-								'Java'
-							),
-							React.createElement(
-								'option',
-								{ value: 'text/x-objectivec' },
-								'Objective C'
-							)
+							'option',
+							{ value: 'markdown' },
+							'Markdown'
+						),
+						React.createElement(
+							'option',
+							{ value: 'javascript' },
+							'JavaScript'
+						),
+						React.createElement(
+							'option',
+							{ value: 'text/x-java' },
+							'Java'
+						),
+						React.createElement(
+							'option',
+							{ value: 'text/x-objectivec' },
+							'Objective C'
 						)
-					),
+					)
+				),
+				React.createElement(
+					'div',
+					{ className: 'col-sm-4' },
 					React.createElement(
-						'div',
-						{ className: 'col-sm-5' },
+						'p',
+						{ className: 'text-info' },
+						'Press ',
 						React.createElement(
-							'p',
+							'strong',
 							null,
-							'Press ',
-							React.createElement(
-								'strong',
-								null,
-								'ctrl-space'
-							),
-							' to activate completion.'
-						)
+							'ctrl-space'
+						),
+						' to activate completion.'
 					)
 				)
 			),
 			React.createElement(
 				'div',
 				{ className: 'row' },
-				React.createElement(Codemirror, { ref: 'editor', value: this.state.code, onChange: this.updateCode, options: options, interact: this.interact })
+				React.createElement(Codemirror, { className: 'col-sm-8', ref: 'editor' })
 			),
 			React.createElement(
 				'div',
 				{ className: 'row' },
 				React.createElement(
-					'button',
-					{ className: 'btn btn-primary pull-right', value: 'Submit Solution' },
-					'Submit Solution'
+					'div',
+					{ className: 'col-sm-8' },
+					React.createElement(
+						'button',
+						{ className: 'btn btn-primary pull-right', value: 'Submit Solution' },
+						'Submit Solution'
+					)
 				)
 			)
 		);
@@ -31844,6 +31836,39 @@ var MainLayout = React.createClass({
 module.exports = MainLayout;
 
 },{"./CodeEditor.jsx":171,"react":168}],174:[function(require,module,exports){
+"use strict";
+
+var React = require('react');
+
+var Footer = React.createClass({
+		displayName: "Footer",
+
+		render: function render() {
+				return React.createElement(
+						"div",
+						{ className: "navbar navbar-default navbar-fixed-bottom" },
+						React.createElement(
+								"div",
+								{ className: "container" },
+								React.createElement(
+										"p",
+										{ className: "navbar-text pull-left" },
+										"2015 - Site Built By Nishant Usapkar and Ashish Sharma"
+								),
+								React.createElement(
+										"a",
+										{ href: "http://youtu.be/zJahlKPCL9g", className: "navbar-btn btn-danger btn pull-right" },
+										React.createElement("span", { className: "glyphicon glyphicon-star" }),
+										"Subscribe on YouTube"
+								)
+						)
+				);
+		}
+});
+
+module.exports = Footer;
+
+},{"react":168}],175:[function(require,module,exports){
 "use strict";
 
 var React = require('react');

@@ -31578,17 +31578,17 @@ var Content = require('./Content.jsx');
 var Footer = require('./Footer.jsx');
 
 var AppLayout = React.createClass({
-  displayName: 'AppLayout',
+    displayName: 'AppLayout',
 
-  render: function render() {
-    return React.createElement(
-      'div',
-      { className: 'Layout' },
-      React.createElement(NavigationBar, null),
-      React.createElement(Content, null),
-      React.createElement(Footer, null)
-    );
-  }
+    render: function render() {
+        return React.createElement(
+            'div',
+            { className: 'Layout' },
+            React.createElement(NavigationBar, null),
+            React.createElement(Content, null),
+            React.createElement(Footer, null)
+        );
+    }
 });
 
 module.exports = AppLayout;
@@ -31610,119 +31610,119 @@ require('codemirror/addon/hint/xml-hint');
 require('codemirror/addon/hint/javascript-hint');
 
 var CodeEditor = React.createClass({
-	displayName: 'CodeEditor',
+    displayName: 'CodeEditor',
 
-	getInitialState: function getInitialState() {
-		return {
-			readOnly: false,
-			mode: 'markdown',
-			extraKeys: { "Ctrl-Space": "autocomplete" }
-		};
-	},
+    getInitialState: function getInitialState() {
+        return {
+            readOnly: false,
+            mode: 'markdown',
+            extraKeys: { "Ctrl-Space": "autocomplete" }
+        };
+    },
 
-	changeMode: function changeMode(e) {
-		var mode = e.target.value;
-		this.setState({
-			mode: mode
-		});
-	},
+    changeMode: function changeMode(e) {
+        var mode = e.target.value;
+        this.setState({
+            mode: mode
+        });
+    },
 
-	toggleReadOnly: function toggleReadOnly() {
-		var _this = this;
+    toggleReadOnly: function toggleReadOnly() {
+        var _this = this;
 
-		this.setState({
-			readOnly: !this.state.readOnly
-		}, function () {
-			return _this.refs.editor.focus();
-		});
-	},
+        this.setState({
+            readOnly: !this.state.readOnly
+        }, function () {
+            return _this.refs.editor.focus();
+        });
+    },
 
-	interact: function interact(cm) {
-		console.log(cm.getValue());
-	},
+    interact: function interact(cm) {
+        console.log(cm.getValue());
+    },
 
-	render: function render() {
-		var options = {
-			lineNumbers: true,
-			readOnly: this.state.readOnly,
-			extraKeys: { "Ctrl-Space": "autocomplete" },
-			mode: this.state.mode
-		};
-		return React.createElement(
-			'div',
-			null,
-			React.createElement(
-				'div',
-				{ className: 'row' },
-				React.createElement(
-					'label',
-					{ className: 'col-sm-2', htmlFor: 'markup' },
-					'Select Language:'
-				),
-				React.createElement(
-					'div',
-					{ className: 'col-sm-2' },
-					React.createElement(
-						'select',
-						{ className: 'form-control', onChange: this.changeMode, value: this.state.mode, id: 'markup' },
-						React.createElement(
-							'option',
-							{ value: 'markdown' },
-							'Markdown'
-						),
-						React.createElement(
-							'option',
-							{ value: 'javascript' },
-							'JavaScript'
-						),
-						React.createElement(
-							'option',
-							{ value: 'text/x-java' },
-							'Java'
-						),
-						React.createElement(
-							'option',
-							{ value: 'text/x-objectivec' },
-							'Objective C'
-						)
-					)
-				),
-				React.createElement(
-					'div',
-					{ className: 'col-sm-4' },
-					React.createElement(
-						'p',
-						{ className: 'text-info' },
-						'Press ',
-						React.createElement(
-							'strong',
-							null,
-							'ctrl-space'
-						),
-						' to activate completion.'
-					)
-				)
-			),
-			React.createElement(
-				'div',
-				{ className: 'row' },
-				React.createElement(Codemirror, { className: 'col-sm-8', ref: 'editor' })
-			),
-			React.createElement(
-				'div',
-				{ className: 'row' },
-				React.createElement(
-					'div',
-					{ className: 'col-sm-8' },
-					React.createElement(
-						'button',
-						{ className: 'btn btn-primary pull-right', value: 'Submit Solution' },
-						'Submit Solution'
-					)
-				)
-			)
-		);
-	}
+    render: function render() {
+        var options = {
+            lineNumbers: true,
+            readOnly: this.state.readOnly,
+            extraKeys: { "Ctrl-Space": "autocomplete" },
+            mode: this.state.mode
+        };
+        return React.createElement(
+            'div',
+            null,
+            React.createElement(
+                'div',
+                { className: 'row' },
+                React.createElement(
+                    'label',
+                    { className: 'col-sm-2', htmlFor: 'markup' },
+                    'Select Language:'
+                ),
+                React.createElement(
+                    'div',
+                    { className: 'col-sm-2' },
+                    React.createElement(
+                        'select',
+                        { className: 'form-control', onChange: this.changeMode, value: this.state.mode, id: 'markup' },
+                        React.createElement(
+                            'option',
+                            { value: 'markdown' },
+                            'Markdown'
+                        ),
+                        React.createElement(
+                            'option',
+                            { value: 'javascript' },
+                            'JavaScript'
+                        ),
+                        React.createElement(
+                            'option',
+                            { value: 'text/x-java' },
+                            'Java'
+                        ),
+                        React.createElement(
+                            'option',
+                            { value: 'text/x-objectivec' },
+                            'Objective C'
+                        )
+                    )
+                ),
+                React.createElement(
+                    'div',
+                    { className: 'col-sm-4' },
+                    React.createElement(
+                        'p',
+                        { className: 'text-info' },
+                        'Press ',
+                        React.createElement(
+                            'strong',
+                            null,
+                            'ctrl-space'
+                        ),
+                        ' to activate completion.'
+                    )
+                )
+            ),
+            React.createElement(
+                'div',
+                { className: 'row' },
+                React.createElement(Codemirror, { className: 'col-sm-8', ref: 'editor' })
+            ),
+            React.createElement(
+                'div',
+                { className: 'row' },
+                React.createElement(
+                    'div',
+                    { className: 'col-sm-8' },
+                    React.createElement(
+                        'button',
+                        { className: 'btn btn-primary pull-right', value: 'Submit Solution' },
+                        'Submit Solution'
+                    )
+                )
+            )
+        );
+    }
 });
 
 module.exports = CodeEditor;
@@ -31735,85 +31735,85 @@ var React = require('react');
 var className = require('classnames');
 
 var CodeMirror = React.createClass({
-	displayName: 'CodeMirror',
+    displayName: 'CodeMirror',
 
-	propTypes: {
-		onChange: React.PropTypes.func,
-		onFocusChange: React.PropTypes.func,
-		options: React.PropTypes.object,
-		path: React.PropTypes.string,
-		value: React.PropTypes.string,
-		className: React.PropTypes.any
-	},
+    propTypes: {
+        onChange: React.PropTypes.func,
+        onFocusChange: React.PropTypes.func,
+        options: React.PropTypes.object,
+        path: React.PropTypes.string,
+        value: React.PropTypes.string,
+        className: React.PropTypes.any
+    },
 
-	getInitialState: function getInitialState() {
-		return {
-			isFocused: false
-		};
-	},
+    getInitialState: function getInitialState() {
+        return {
+            isFocused: false
+        };
+    },
 
-	componentDidMount: function componentDidMount() {
-		var textareaNode = this.refs.textarea;
-		this.codeMirror = CM.fromTextArea(textareaNode, this.props.options);
-		this.codeMirror.on('change', this.codemirrorValueChanged);
-		this.codeMirror.on('focus', this.focusChanged.bind(this, true));
-		this.codeMirror.on('blur', this.focusChanged.bind(this, false));
-		this._currentCodemirrorValue = this.props.defaultValue || this.props.value || '';
-		this.codeMirror.setValue(this._currentCodemirrorValue);
-	},
+    componentDidMount: function componentDidMount() {
+        var textareaNode = this.refs.textarea;
+        this.codeMirror = CM.fromTextArea(textareaNode, this.props.options);
+        this.codeMirror.on('change', this.codemirrorValueChanged);
+        this.codeMirror.on('focus', this.focusChanged.bind(this, true));
+        this.codeMirror.on('blur', this.focusChanged.bind(this, false));
+        this._currentCodemirrorValue = this.props.defaultValue || this.props.value || '';
+        this.codeMirror.setValue(this._currentCodemirrorValue);
+    },
 
-	componentWillUnmount: function componentWillUnmount() {
-		// todo: is there a lighter-weight way to remove the cm instance?
-		if (this.codeMirror) {
-			this.codeMirror.toTextArea();
-		}
-	},
+    componentWillUnmount: function componentWillUnmount() {
+        // todo: is there a lighter-weight way to remove the cm instance?
+        if (this.codeMirror) {
+            this.codeMirror.toTextArea();
+        }
+    },
 
-	componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
-		if (this.codeMirror && nextProps.value !== undefined && this._currentCodemirrorValue !== nextProps.value) {
-			this.codeMirror.setValue(nextProps.value);
-		}
-		if (typeof nextProps.options === 'object') {
-			for (var optionName in nextProps.options) {
-				if (nextProps.options.hasOwnProperty(optionName)) {
-					this.codeMirror.setOption(optionName, nextProps.options[optionName]);
-				}
-			}
-		}
-	},
+    componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
+        if (this.codeMirror && nextProps.value !== undefined && this._currentCodemirrorValue !== nextProps.value) {
+            this.codeMirror.setValue(nextProps.value);
+        }
+        if (typeof nextProps.options === 'object') {
+            for (var optionName in nextProps.options) {
+                if (nextProps.options.hasOwnProperty(optionName)) {
+                    this.codeMirror.setOption(optionName, nextProps.options[optionName]);
+                }
+            }
+        }
+    },
 
-	getCodeMirror: function getCodeMirror() {
-		return this.codeMirror;
-	},
+    getCodeMirror: function getCodeMirror() {
+        return this.codeMirror;
+    },
 
-	focus: function focus() {
-		if (this.codeMirror) {
-			this.codeMirror.focus();
-		}
-	},
+    focus: function focus() {
+        if (this.codeMirror) {
+            this.codeMirror.focus();
+        }
+    },
 
-	focusChanged: function focusChanged(focused) {
-		this.setState({
-			isFocused: focused
-		});
-		this.props.onFocusChange && this.props.onFocusChange(focused);
-	},
+    focusChanged: function focusChanged(focused) {
+        this.setState({
+            isFocused: focused
+        });
+        this.props.onFocusChange && this.props.onFocusChange(focused);
+    },
 
-	codemirrorValueChanged: function codemirrorValueChanged(doc, change) {
-		var newValue = doc.getValue();
-		this._currentCodemirrorValue = newValue;
-		this.props.onChange && this.props.onChange(newValue);
-	},
+    codemirrorValueChanged: function codemirrorValueChanged(doc, change) {
+        var newValue = doc.getValue();
+        this._currentCodemirrorValue = newValue;
+        this.props.onChange && this.props.onChange(newValue);
+    },
 
-	render: function render() {
-		var editorClassName = className('ReactCodeMirror', this.state.isFocused ? 'ReactCodeMirror--focused' : null, this.props.className);
+    render: function render() {
+        var editorClassName = className('ReactCodeMirror', this.state.isFocused ? 'ReactCodeMirror--focused' : null, this.props.className);
 
-		return React.createElement(
-			'div',
-			{ className: editorClassName },
-			React.createElement('textarea', { ref: 'textarea', name: this.props.path })
-		);
-	}
+        return React.createElement(
+            'div',
+            { className: editorClassName },
+            React.createElement('textarea', { ref: 'textarea', name: this.props.path })
+        );
+    }
 
 });
 
@@ -31826,11 +31826,11 @@ var React = require('react');
 var CodeEditor = require('./CodeEditor.jsx');
 
 var MainLayout = React.createClass({
-  displayName: 'MainLayout',
+    displayName: 'MainLayout',
 
-  render: function render() {
-    return React.createElement(CodeEditor, null);
-  }
+    render: function render() {
+        return React.createElement(CodeEditor, null);
+    }
 });
 
 module.exports = MainLayout;
@@ -31841,29 +31841,29 @@ module.exports = MainLayout;
 var React = require('react');
 
 var Footer = React.createClass({
-		displayName: "Footer",
+    displayName: "Footer",
 
-		render: function render() {
-				return React.createElement(
-						"div",
-						{ className: "navbar navbar-default navbar-fixed-bottom" },
-						React.createElement(
-								"div",
-								{ className: "container" },
-								React.createElement(
-										"p",
-										{ className: "navbar-text pull-left" },
-										"2015 - Site Built By Nishant Usapkar and Ashish Sharma"
-								),
-								React.createElement(
-										"a",
-										{ href: "http://youtu.be/zJahlKPCL9g", className: "navbar-btn btn-danger btn pull-right" },
-										React.createElement("span", { className: "glyphicon glyphicon-star" }),
-										"Subscribe on YouTube"
-								)
-						)
-				);
-		}
+    render: function render() {
+        return React.createElement(
+            "div",
+            { className: "navbar navbar-default navbar-fixed-bottom" },
+            React.createElement(
+                "div",
+                { className: "container" },
+                React.createElement(
+                    "p",
+                    { className: "navbar-text pull-left" },
+                    "2015 - Site Built By Nishant Usapkar and Ashish Sharma"
+                ),
+                React.createElement(
+                    "a",
+                    { href: "http://youtu.be/zJahlKPCL9g", className: "navbar-btn btn-danger btn pull-right" },
+                    React.createElement("span", { className: "glyphicon glyphicon-star" }),
+                    "Subscribe on YouTube"
+                )
+            )
+        );
+    }
 });
 
 module.exports = Footer;
@@ -31874,53 +31874,53 @@ module.exports = Footer;
 var React = require('react');
 
 var NavigationBar = React.createClass({
-  displayName: "NavigationBar",
+    displayName: "NavigationBar",
 
-  render: function render() {
-    return React.createElement(
-      "nav",
-      { className: "navbar navbar-inverse", role: "navigation" },
-      React.createElement(
-        "div",
-        { className: "container-fluid" },
-        React.createElement(
-          "div",
-          { className: "navbar-header" },
-          React.createElement(
-            "a",
-            { className: "navbar-brand", href: "#" },
-            React.createElement("img", { className: "brandImage", alt: "Brand", src: "img/hired.jpeg" })
-          )
-        ),
-        React.createElement(
-          "div",
-          { className: "navbar-right" },
-          React.createElement(
-            "ul",
-            { className: "nav navbar-nav" },
+    render: function render() {
+        return React.createElement(
+            "nav",
+            { className: "navbar navbar-inverse", role: "navigation" },
             React.createElement(
-              "li",
-              { className: "active" },
-              React.createElement(
-                "a",
-                { href: "#" },
-                "Home"
-              )
-            ),
-            React.createElement(
-              "li",
-              null,
-              React.createElement(
-                "a",
-                { href: "#" },
-                "Create an interview"
-              )
+                "div",
+                { className: "container-fluid" },
+                React.createElement(
+                    "div",
+                    { className: "navbar-header" },
+                    React.createElement(
+                        "a",
+                        { className: "navbar-brand", href: "#" },
+                        React.createElement("img", { className: "brandImage", alt: "Brand", src: "img/hired.jpeg" })
+                    )
+                ),
+                React.createElement(
+                    "div",
+                    { className: "navbar-right" },
+                    React.createElement(
+                        "ul",
+                        { className: "nav navbar-nav" },
+                        React.createElement(
+                            "li",
+                            { className: "active" },
+                            React.createElement(
+                                "a",
+                                { href: "#" },
+                                "Home"
+                            )
+                        ),
+                        React.createElement(
+                            "li",
+                            null,
+                            React.createElement(
+                                "a",
+                                { href: "#" },
+                                "Create an interview"
+                            )
+                        )
+                    )
+                )
             )
-          )
-        )
-      )
-    );
-  }
+        );
+    }
 });
 
 module.exports = NavigationBar;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router'
 
 class NavigationBar extends React.Component {
 
@@ -13,9 +14,9 @@ class NavigationBar extends React.Component {
                     </div>
                     <div className="navbar-right">
                         <ul className="nav navbar-nav">
-                            <li className="active"><a href="#">Home</a></li>
-                            <li><a href="#">Join</a></li>
-                            <li><a href="#">Create an interview</a></li>
+                            <li className="active"><Link to="/home">Home</Link></li>
+                            <li><Link to="/join">Join</Link></li>
+                            <li><Link to="/create">Create an interview</Link></li>
                         </ul>
                     </div>
                 </div>

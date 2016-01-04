@@ -14,9 +14,9 @@ class NavigationBar extends React.Component {
                     </div>
                     <div className="navbar-right">
                         <ul className="nav navbar-nav">
-                            <li className="active"><Link to="/home">Home</Link></li>
+                            <li className="active"><a href="#">Home</a></li>
                             <li><Link to="/join">Join</Link></li>
-                            <li><Link to="/create">CreateInterviewForm</Link></li>
+                            <li><Link to="/create">Create Interview</Link></li>
                         </ul>
                         {this.props.children}
                     </div>
@@ -25,5 +25,5 @@ class NavigationBar extends React.Component {
         )
     }
 };
-
+ 
 export default NavigationBar;

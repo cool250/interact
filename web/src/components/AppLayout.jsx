@@ -11,7 +11,7 @@ class AppLayout extends React.Component {
         return (
             <div className="Layout">
                 <NavigationBar/>
-                <Content/>
+                {this.props.children}
                 <Footer/>
             </div>
         )

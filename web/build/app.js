@@ -35749,11 +35749,15 @@ var _componentsContentJsx2 = _interopRequireDefault(_componentsContentJsx);
 
 // Finally, we render a <Router> with some <Route>s.
 // It does all the fancy routing stuff for us.
-// @TODO add the child paths
+// @TODO add the child paths e.g. <Route path="form" component={CreateInterviewForm}/>
 (0, _reactDom.render)(_react2['default'].createElement(
     _reactRouter.Router,
     { history: _reactRouter.browserHistory },
-    _react2['default'].createElement(_reactRouter.Route, { path: '/', component: _componentsAppLayoutJsx2['default'] })
+    _react2['default'].createElement(
+        _reactRouter.Route,
+        { path: '/', component: _componentsAppLayoutJsx2['default'] },
+        _react2['default'].createElement(_reactRouter.IndexRoute, { component: _componentsContentJsx2['default'] })
+    )
 ), ReactApp);
 
 },{"./components/AppLayout.jsx":217,"./components/Content.jsx":220,"react":213,"react-dom":60,"react-router":80}],217:[function(require,module,exports){
@@ -35805,7 +35809,7 @@ var AppLayout = (function (_React$Component) {
                 'div',
                 { className: 'Layout' },
                 _react2['default'].createElement(_NavBarJsx2['default'], null),
-                _react2['default'].createElement(_ContentJsx2['default'], null),
+                this.props.children,
                 _react2['default'].createElement(_FooterJsx2['default'], null)
             );
         }

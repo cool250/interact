@@ -21,23 +21,13 @@ router.route('/')
 
 
 // Get Interview Details
+// @TODO hardcoded for testing
 router.route('/interview/:interview_id/')
 
     // get the asset with that id 
     .get(function(req, res) {
-
-       
-    });
-
-// Get All Transactions for an asset
-router.route('/transactions/:asset_id')
-
-    // get the asset with that id 
-    .get(function(req, res) {
-
-      
-    });
-
+        res.json({ success : "true" });  
+});
 // --------------- API Routes End ----------------------
 
 module.exports = router;

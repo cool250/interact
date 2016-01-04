@@ -16,8 +16,9 @@ class NavigationBar extends React.Component {
                         <ul className="nav navbar-nav">
                             <li className="active"><Link to="/home">Home</Link></li>
                             <li><Link to="/join">Join</Link></li>
-                            <li><Link to="/create">Create an interview</Link></li>
+                            <li><Link to="/create">CreateInterviewForm</Link></li>
                         </ul>
+                        {this.props.children}
                     </div>
                 </div>
             </nav>

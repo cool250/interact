@@ -3,7 +3,7 @@
   "description": "Basic example of using React with CommonJS",
   "dependencies": {
     "babel-preset-react": "^6.3.13",
-    "babelify": "^6.4.0",
+    "babelify": "^6.0.0",
     "bootstrap": "^3.3.6",
     "browserify": "^12.0.1",
     "codemirror": "^5.10.0",
@@ -14,10 +14,12 @@
     "react-dom": "^0.14.5",
     "react-router": "^1.0.3",
     "uglifyjs": "^2.4.10",
-    "watchify": "^3.4.0"
+    "watchify": "^3.4.0",
+    "boron": "^0.2",
+    "open": "^0.0.5"
   },
   "scripts": {
-    "watch": "watchify web/src/App.jsx -v -t babelify -o web/build/app.js",
+    "watch": "watchify web/src/App.jsx -v -t babelify --presets react -o web/build/app.js",
     "build": "browserify web/src/App.jsx -t babelify | uglifyjs -mc warnings=false > web/build/app.js",
     "start": "node server.js"
   }

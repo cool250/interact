@@ -16,4 +16,6 @@ var port = process.env.PORT || 5000;
 
 app.listen(port);
 
+console.log("Add debug to check if new version");
+
 console.log("Running on Port " + port);

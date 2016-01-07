@@ -1,5 +1,6 @@
 import React from 'react';
 import CodeMirror from './CodeMirror.jsx';
+import {Grid, Row, Col, Button, Input} from 'react-bootstrap';
 
 import 'codemirror/mode/javascript/javascript';
 import 'codemirror/mode/xml/xml';
@@ -45,32 +46,31 @@ class CodeEditor extends React.Component {
             mode: this.state.mode
         };
         return (
-            <div class="container">
-                <div className="row">
-                    <div className="col-sm-2" >
+
+            <Grid>
+                <Row>
+                    <Col xs={2} md={2}>
                         <label htmlFor="markup">Select Language:</label>
-                    </div>
-                    <div className="col-sm-2">
-                        <select className="form-control" onChange={this.changeMode} value={this.state.mode} id="markup">
+                    </Col>
+                    <Col xs={2} md={2}>
+                        <Input type="select" onChange={this.changeMode} value={this.state.mode} id="markup">
                             <option value="markdown">Markdown</option>
                             <option value="javascript">JavaScript</option>
                             <option value="text/x-java">Java</option>
                             <option value="text/x-objectivec">Objective C</option>
-                        </select>
-                    </div>
-                    <div className="col-sm-4">
+                        </Input>
+                    </Col>
+                    <Col xs={4} md={4}>
                         <p className="text-info">Press <strong>ctrl-space</strong> to activate completion.</p>
-                    </div>
-                </div>
-                <div className="row">
+                    </Col>
+                </Row>
+                <Row>
                     <CodeMirror ref="editor" options={options} interact={this.interact}/>
-                </div>
-                <div className="row">
-                    <div>
-                        <button className="btn btn-primary pull-right" value="Submit Solution">Submit Solution</button>
-                    </div>
-                </div>
-            </div>
+                </Row>
+                <Row>
+                    <Button bsStyle="primary pull-right">Submit Solution</Button>
+                </Row>
+            </Grid>
         );
     }
 };

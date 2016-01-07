@@ -109,7 +109,7 @@ exports["default"] = function (obj, keys) {
 exports.__esModule = true;
 },{}],11:[function(require,module,exports){
 /*!
-  Copyright (c) 2015 Jed Watson.
+  Copyright (c) 2016 Jed Watson.
   Licensed under the MIT License (MIT), see
   http://jedwatson.github.io/classnames
 */
@@ -121,7 +121,7 @@ exports.__esModule = true;
 	var hasOwn = {}.hasOwnProperty;
 
 	function classNames () {
-		var classes = '';
+		var classes = [];
 
 		for (var i = 0; i < arguments.length; i++) {
 			var arg = arguments[i];
@@ -130,19 +130,19 @@ exports.__esModule = true;
 			var argType = typeof arg;
 
 			if (argType === 'string' || argType === 'number') {
-				classes += ' ' + arg;
+				classes.push(arg);
 			} else if (Array.isArray(arg)) {
-				classes += ' ' + classNames.apply(null, arg);
+				classes.push(classNames.apply(null, arg));
 			} else if (argType === 'object') {
 				for (var key in arg) {
 					if (hasOwn.call(arg, key) && arg[key]) {
-						classes += ' ' + key;
+						classes.push(key);
 					}
 				}
 			}
 		}
 
-		return classes.substr(1);
+		return classes.join(' ');
 	}
 
 	if (typeof module !== 'undefined' && module.exports) {
@@ -14113,15 +14113,21 @@ module.exports = focusNode;
  * @typechecks
  */
 
+/* eslint-disable fb-www/typeof-undefined */
+
 /**
  * Same as document.activeElement but wraps in a try-catch block. In IE it is
  * not safe to call document.activeElement if there is nothing focused.
  *
- * The activeElement will be null only if the document body is not yet defined.
+ * The activeElement will be null only if the document or document body is not
+ * yet defined.
  */
-"use strict";
+'use strict';
 
 function getActiveElement() /*?DOMElement*/{
+  if (typeof document === 'undefined') {
+    return null;
+  }
   try {
     return document.activeElement || document.body;
   } catch (e) {
@@ -47366,7 +47372,7 @@ module.exports = ReactUpdates;
 
 'use strict';
 
-module.exports = '0.14.5';
+module.exports = '0.14.6';
 },{}],408:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -51106,7 +51112,7 @@ module.exports = require('./lib/React');
 'use strict';
 module.exports = function (str) {
 	return encodeURIComponent(str).replace(/[!'()*]/g, function (c) {
-		return '%' + c.charCodeAt(0).toString(16);
+		return '%' + c.charCodeAt(0).toString(16).toUpperCase();
 	});
 };
 
@@ -51491,6 +51497,10 @@ var _componentsCreateInterviewFormJsx = require('./components/CreateInterviewFor
 
 var _componentsCreateInterviewFormJsx2 = _interopRequireDefault(_componentsCreateInterviewFormJsx);
 
+var _componentsJoinInterviewJsx = require('./components/JoinInterview.jsx');
+
+var _componentsJoinInterviewJsx2 = _interopRequireDefault(_componentsJoinInterviewJsx);
+
 // Finally, we render a <Router> with some <Route>s.
 // It does all the fancy routing stuff for us.
 // @TODO add the child paths e.g. <Route path="form" component={CreateInterviewForm}/>
@@ -51501,11 +51511,12 @@ var _componentsCreateInterviewFormJsx2 = _interopRequireDefault(_componentsCreat
         _reactRouter.Route,
         { path: '/', component: _componentsAppLayoutJsx2['default'] },
         _react2['default'].createElement(_reactRouter.IndexRoute, { component: _componentsContentJsx2['default'] }),
-        _react2['default'].createElement(_reactRouter.Route, { path: 'create', component: _componentsCreateInterviewFormJsx2['default'] })
+        _react2['default'].createElement(_reactRouter.Route, { path: 'create', component: _componentsCreateInterviewFormJsx2['default'] }),
+        _react2['default'].createElement(_reactRouter.Route, { path: 'join', component: _componentsJoinInterviewJsx2['default'] })
     )
 ), ReactApp);
 
-},{"./components/AppLayout.jsx":459,"./components/Content.jsx":462,"./components/CreateInterviewForm.jsx":463,"react":452,"react-dom":275,"react-router":319}],459:[function(require,module,exports){
+},{"./components/AppLayout.jsx":459,"./components/Content.jsx":462,"./components/CreateInterviewForm.jsx":463,"./components/JoinInterview.jsx":466,"react":452,"react-dom":275,"react-router":319}],459:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -51568,7 +51579,7 @@ var AppLayout = (function (_React$Component) {
 exports['default'] = AppLayout;
 module.exports = exports['default'];
 
-},{"./Content.jsx":462,"./Footer.jsx":465,"./NavBar.jsx":466,"react":452}],460:[function(require,module,exports){
+},{"./Content.jsx":462,"./Footer.jsx":465,"./NavBar.jsx":467,"react":452}],460:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -51592,6 +51603,8 @@ var _react2 = _interopRequireDefault(_react);
 var _CodeMirrorJsx = require('./CodeMirror.jsx');
 
 var _CodeMirrorJsx2 = _interopRequireDefault(_CodeMirrorJsx);
+
+var _reactBootstrap = require('react-bootstrap');
 
 require('codemirror/mode/javascript/javascript');
 
@@ -51655,14 +51668,14 @@ var CodeEditor = (function (_React$Component) {
                 mode: this.state.mode
             };
             return _react2['default'].createElement(
-                'div',
-                { 'class': 'container' },
+                _reactBootstrap.Grid,
+                null,
                 _react2['default'].createElement(
-                    'div',
-                    { className: 'row' },
+                    _reactBootstrap.Row,
+                    null,
                     _react2['default'].createElement(
-                        'div',
-                        { className: 'col-sm-2' },
+                        _reactBootstrap.Col,
+                        { md: 2 },
                         _react2['default'].createElement(
                             'label',
                             { htmlFor: 'markup' },
@@ -51670,11 +51683,11 @@ var CodeEditor = (function (_React$Component) {
                         )
                     ),
                     _react2['default'].createElement(
-                        'div',
-                        { className: 'col-sm-2' },
+                        _reactBootstrap.Col,
+                        { md: 2 },
                         _react2['default'].createElement(
-                            'select',
-                            { className: 'form-control', onChange: this.changeMode, value: this.state.mode, id: 'markup' },
+                            _reactBootstrap.Input,
+                            { type: 'select', onChange: this.changeMode, value: this.state.mode, id: 'markup' },
                             _react2['default'].createElement(
                                 'option',
                                 { value: 'markdown' },
@@ -51698,8 +51711,8 @@ var CodeEditor = (function (_React$Component) {
                         )
                     ),
                     _react2['default'].createElement(
-                        'div',
-                        { className: 'col-sm-4' },
+                        _reactBootstrap.Col,
+                        { md: 8 },
                         _react2['default'].createElement(
                             'p',
                             { className: 'text-info' },
@@ -51714,21 +51727,17 @@ var CodeEditor = (function (_React$Component) {
                     )
                 ),
                 _react2['default'].createElement(
-                    'div',
-                    { className: 'row' },
+                    _reactBootstrap.Row,
+                    null,
                     _react2['default'].createElement(_CodeMirrorJsx2['default'], { ref: 'editor', options: options, interact: this.interact })
                 ),
                 _react2['default'].createElement(
-                    'div',
-                    { className: 'row' },
+                    _reactBootstrap.Row,
+                    null,
                     _react2['default'].createElement(
-                        'div',
-                        null,
-                        _react2['default'].createElement(
-                            'button',
-                            { className: 'btn btn-primary pull-right', value: 'Submit Solution' },
-                            'Submit Solution'
-                        )
+                        _reactBootstrap.Button,
+                        { bsStyle: 'primary pull-right' },
+                        'Submit Solution'
                     )
                 )
             );
@@ -51743,7 +51752,7 @@ var CodeEditor = (function (_React$Component) {
 exports['default'] = CodeEditor;
 module.exports = exports['default'];
 
-},{"./CodeMirror.jsx":461,"codemirror/addon/hint/javascript-hint":13,"codemirror/addon/hint/show-hint":14,"codemirror/addon/hint/xml-hint":15,"codemirror/mode/clike/clike":17,"codemirror/mode/javascript/javascript":18,"codemirror/mode/markdown/markdown":19,"codemirror/mode/xml/xml":21,"react":452}],461:[function(require,module,exports){
+},{"./CodeMirror.jsx":461,"codemirror/addon/hint/javascript-hint":13,"codemirror/addon/hint/show-hint":14,"codemirror/addon/hint/xml-hint":15,"codemirror/mode/clike/clike":17,"codemirror/mode/javascript/javascript":18,"codemirror/mode/markdown/markdown":19,"codemirror/mode/xml/xml":21,"react":452,"react-bootstrap":264}],461:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -52210,6 +52219,96 @@ exports["default"] = Footer;
 module.exports = exports["default"];
 
 },{"react":452}],466:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+    value: true
+});
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactBootstrap = require('react-bootstrap');
+
+var JoinInterview = (function (_React$Component) {
+    _inherits(JoinInterview, _React$Component);
+
+    function JoinInterview() {
+        _classCallCheck(this, JoinInterview);
+
+        _get(Object.getPrototypeOf(JoinInterview.prototype), 'constructor', this).call(this);
+    }
+
+    _createClass(JoinInterview, [{
+        key: 'render',
+        value: function render() {
+            return _react2['default'].createElement(
+                _reactBootstrap.Grid,
+                { fluid: 'true' },
+                _react2['default'].createElement(
+                    _reactBootstrap.Row,
+                    null,
+                    _react2['default'].createElement(
+                        _reactBootstrap.Col,
+                        { md: 8 },
+                        _react2['default'].createElement('img', { src: 'http://placehold.it/800x400?text=IMAGE', alt: 'Image' })
+                    ),
+                    _react2['default'].createElement(
+                        _reactBootstrap.Col,
+                        { md: 4 },
+                        _react2['default'].createElement(
+                            'div',
+                            { 'class': 'well' },
+                            _react2['default'].createElement(
+                                'p',
+                                null,
+                                'Some text..'
+                            )
+                        ),
+                        _react2['default'].createElement(
+                            'div',
+                            { 'class': 'well' },
+                            _react2['default'].createElement(
+                                'p',
+                                null,
+                                'Upcoming Events..'
+                            )
+                        ),
+                        _react2['default'].createElement(
+                            'div',
+                            { 'class': 'well' },
+                            _react2['default'].createElement(
+                                'p',
+                                null,
+                                'Visit Our Blog'
+                            )
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return JoinInterview;
+})(_react2['default'].Component);
+
+;
+
+exports['default'] = JoinInterview;
+module.exports = exports['default'];
+
+},{"react":452,"react-bootstrap":264}],467:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {

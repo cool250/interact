@@ -47,12 +47,12 @@ class CodeEditor extends React.Component {
         };
         return (
 
-            <Grid>
+            <Grid >
                 <Row>
-                    <Col xs={2} md={2}>
+                    <Col md={2}>
                         <label htmlFor="markup">Select Language:</label>
                     </Col>
-                    <Col xs={2} md={2}>
+                    <Col md={2}>
                         <Input type="select" onChange={this.changeMode} value={this.state.mode} id="markup">
                             <option value="markdown">Markdown</option>
                             <option value="javascript">JavaScript</option>
@@ -60,7 +60,7 @@ class CodeEditor extends React.Component {
                             <option value="text/x-objectivec">Objective C</option>
                         </Input>
                     </Col>
-                    <Col xs={4} md={4}>
+                    <Col md={8}>
                         <p className="text-info">Press <strong>ctrl-space</strong> to activate completion.</p>
                     </Col>
                 </Row>

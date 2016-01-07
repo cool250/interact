@@ -1,7 +1,6 @@
 var express = require("express");
 var app     = express();
 var path    = require("path");
-var open    = require("open");
 
 // API Routes
 var api = require('./server/routes/api');
@@ -15,8 +14,6 @@ app.use('/', express.static(__dirname + '/web'));
 
 var port = process.env.PORT || 5000;
 
-app.listen(port, 'localhost', function() {
-    console.log("Running on Port " + port);
-    console.log("Launching browser");
-    // open('http://localhost:'+ port); - crashes process on heroku server
-});
+app.listen(port);
+
+console.log("Running on Port " + port);

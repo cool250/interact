@@ -5,16 +5,4 @@
 *.sln
 obj/Debug/interact.njsproj.FileListAbsolute.txt
 *.cache
-.idea/workspace.xml
-
-.idea/modules.xml
-
-.idea/vcs.xml
-
-.idea/libraries/interact_node_modules.xml
-
-.idea/jsLibraryMappings.xml
-
-.idea/interact.iml
-
-.idea/encodings.xml
+.idea/

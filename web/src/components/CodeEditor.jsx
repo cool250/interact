@@ -45,9 +45,11 @@ class CodeEditor extends React.Component {
             mode: this.state.mode
         };
         return (
-            <div>
+            <div class="container">
                 <div className="row">
-                    <label className="col-sm-2" htmlFor="markup">Select Language:</label>
+                    <div className="col-sm-2" >
+                        <label htmlFor="markup">Select Language:</label>
+                    </div>
                     <div className="col-sm-2">
                         <select className="form-control" onChange={this.changeMode} value={this.state.mode} id="markup">
                             <option value="markdown">Markdown</option>
@@ -61,10 +63,10 @@ class CodeEditor extends React.Component {
                     </div>
                 </div>
                 <div className="row">
-                    <CodeMirror className="col-sm-8" ref="editor" options={options} interact={this.interact}/>
+                    <CodeMirror ref="editor" options={options} interact={this.interact}/>
                 </div>
                 <div className="row">
-                    <div className="col-sm-8">
+                    <div>
                         <button className="btn btn-primary pull-right" value="Submit Solution">Submit Solution</button>
                     </div>
                 </div>

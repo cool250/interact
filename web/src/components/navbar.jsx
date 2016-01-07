@@ -12,14 +12,15 @@ class NavigationBar extends React.Component {
                             <img className="brandImage" alt="Brand" src="img/hired.jpeg"></img>
                         </a>
                     </div>
-                    <div className="navbar-right">
-                        <ul className="nav navbar-nav">
-                            <li className="active"><a href="#">Home</a></li>
-                            <li><Link to="/join">Join</Link></li>
-                            <li><Link to="/create">Create Interview</Link></li>
-                        </ul>
-                        {this.props.children}
-                    </div>
+                    <ul className="nav navbar-nav">
+                        <li className="active"><a href="#">Home</a></li>
+                        <li><Link to="/join">Join</Link></li>
+                        <li><Link to="/create">Create Interview</Link></li>
+                    </ul>
+                    <ul className="nav navbar-nav navbar-right">
+                        <li><a href="#"><span className="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                        <li><a href="#"><span className="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    </ul>
                 </div>
             </nav>
         )

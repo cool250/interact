@@ -4,6 +4,8 @@ var express = require('express');
 // var mongoose = require('mongoose');
 
 var router = express.Router();
+var VideoControl = require('../app/VideoControl.js');
+
 
 
 // mongoose.connect('mongodb://test:test@ds047762.mongolab.com:47762/chain');
@@ -11,13 +13,29 @@ var router = express.Router();
  
 // --------------- API Routes Start ----------------------
 // test route to make sure everything is working (accessed at GET http://localhost:5000/api)
+router.route('/session')
+
+    // get API root context
+    .get(function(req, res) {
+        console.log ("In startVideo");
+
+        VideoControl.getVideoSession( function (error, body) {
+            if(error)
+                res.json(error);
+            else
+                res.json(body);
+        }
+
+    );
+});
+
 router.route('/')
 
     // get API root context
     .get(function(req, res) {
 
-    res.json({ message: 'hooray! welcome to our api!' });   
-});
+        res.json({ message: 'hooray! welcome to our api!' });
+    });
 
 
 // Get Interview Details

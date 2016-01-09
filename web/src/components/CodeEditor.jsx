@@ -68,7 +68,7 @@ class CodeEditor extends React.Component {
                     <CodeMirror ref="editor" options={options} interact={this.interact}/>
                 </Row>
                 <Row>
-                    <Button bsStyle="primary pull-right">Submit Solution</Button>
+                    <Button bsStyle="primary">Submit Solution</Button>
                 </Row>
             </Grid>
         );

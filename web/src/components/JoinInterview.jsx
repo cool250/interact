@@ -5,24 +5,82 @@ class JoinInterview extends React.Component {
 
     constructor() {
         super();
+        this.state = {session: []}
     }
 
+    componentDidMount() {
+        this.loadSession();
+    }
 
-    render () {
+    loadSession() {
+        $.ajax({
+            url: '../api/v1/session',
+            dataType: 'json',
+            success: (data) => {
+                this.setState({session: data});
+                console.log(data);
+                this.initializeSession();
+
+            },
+            error: (xhr, status, err) => {
+                console.error(this.props.url, status, err.toString());
+            }
+        });
+    }
+
+    initializeSession() {
+        var apiKey = this.state.session.apiKey;
+        var sessionId = this.state.session.sessionId;
+        var token = this.state.session.token;
+
+        var session = OT.initSession(apiKey, sessionId);
+
+        // Subscribe to a newly created stream
+        session.on('streamCreated', function (event) {
+            session.subscribe(event.stream, 'subscriber', {
+                insertMode: 'append',
+                width: '100%',
+                height: '100%'
+            });
+        });
+
+        session.on('sessionDisconnected', function (event) {
+            console.log('You were disconnected from the session.', event.reason);
+        });
+
+        // Connect to the session
+        session.connect(token, function (error) {
+            // If the connection is successful, initialize a publisher and publish to the session
+            if (!error) {
+                var publisher = OT.initPublisher('publisher', {
+                    insertMode: 'append',
+                    width: '100%',
+                    height: '100%'
+                });
+
+                session.publish(publisher);
+            } else {
+                console.log('There was an error connecting to the session: ', error.code, error.message);
+            }
+        });
+    }
+
+    render() {
         return (
-            <Grid fluid="true">
+            <Grid fluid={true}>
                 <Row>
                     <Col md={8}>
-                        <img src="http://placehold.it/800x400?text=IMAGE" alt="Image"></img>
+                        <div id="publisher"></div>
+                        <div id="subscribers"></div>
                     </Col>
                     <Col md={4}>
-                        <div class="well">
+                        <div>
                             <p>Some text..</p>
                         </div>
-                        <div class="well">
+                        <div>
                             <p>Upcoming Events..</p>
                         </div>
-                        <div class="well">
+                        <div>
                             <p>Visit Our Blog</p>
                         </div>
                     </Col>
@@ -30,6 +88,7 @@ class JoinInterview extends React.Component {
             </Grid>
         );
     }
-};
+}
+;
 
 export default JoinInterview;

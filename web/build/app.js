@@ -51736,7 +51736,7 @@ var CodeEditor = (function (_React$Component) {
                     null,
                     _react2['default'].createElement(
                         _reactBootstrap.Button,
-                        { bsStyle: 'primary pull-right' },
+                        { bsStyle: 'primary' },
                         'Submit Solution'
                     )
                 )
@@ -52248,28 +52248,91 @@ var JoinInterview = (function (_React$Component) {
         _classCallCheck(this, JoinInterview);
 
         _get(Object.getPrototypeOf(JoinInterview.prototype), 'constructor', this).call(this);
+        this.state = { session: [] };
     }
 
     _createClass(JoinInterview, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            this.loadSession();
+        }
+    }, {
+        key: 'loadSession',
+        value: function loadSession() {
+            var _this = this;
+
+            $.ajax({
+                url: '../api/v1/session',
+                dataType: 'json',
+                success: function success(data) {
+                    _this.setState({ session: data });
+                    console.log(data);
+                    _this.initializeSession();
+                },
+                error: function error(xhr, status, err) {
+                    console.error(_this.props.url, status, err.toString());
+                }
+            });
+        }
+    }, {
+        key: 'initializeSession',
+        value: function initializeSession() {
+            var apiKey = this.state.session.apiKey;
+            var sessionId = this.state.session.sessionId;
+            var token = this.state.session.token;
+
+            var session = OT.initSession(apiKey, sessionId);
+
+            // Subscribe to a newly created stream
+            session.on('streamCreated', function (event) {
+                session.subscribe(event.stream, 'subscriber', {
+                    insertMode: 'append',
+                    width: '100%',
+                    height: '100%'
+                });
+            });
+
+            session.on('sessionDisconnected', function (event) {
+                console.log('You were disconnected from the session.', event.reason);
+            });
+
+            // Connect to the session
+            session.connect(token, function (error) {
+                // If the connection is successful, initialize a publisher and publish to the session
+                if (!error) {
+                    var publisher = OT.initPublisher('publisher', {
+                        insertMode: 'append',
+                        width: '100%',
+                        height: '100%'
+                    });
+
+                    session.publish(publisher);
+                } else {
+                    console.log('There was an error connecting to the session: ', error.code, error.message);
+                }
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
             return _react2['default'].createElement(
                 _reactBootstrap.Grid,
-                { fluid: 'true' },
+                { fluid: true },
                 _react2['default'].createElement(
                     _reactBootstrap.Row,
                     null,
                     _react2['default'].createElement(
                         _reactBootstrap.Col,
                         { md: 8 },
-                        _react2['default'].createElement('img', { src: 'http://placehold.it/800x400?text=IMAGE', alt: 'Image' })
+                        _react2['default'].createElement('div', { id: 'publisher' }),
+                        _react2['default'].createElement('div', { id: 'subscribers' })
                     ),
                     _react2['default'].createElement(
                         _reactBootstrap.Col,
                         { md: 4 },
                         _react2['default'].createElement(
                             'div',
-                            { 'class': 'well' },
+                            null,
                             _react2['default'].createElement(
                                 'p',
                                 null,
@@ -52278,7 +52341,7 @@ var JoinInterview = (function (_React$Component) {
                         ),
                         _react2['default'].createElement(
                             'div',
-                            { 'class': 'well' },
+                            null,
                             _react2['default'].createElement(
                                 'p',
                                 null,
@@ -52287,7 +52350,7 @@ var JoinInterview = (function (_React$Component) {
                         ),
                         _react2['default'].createElement(
                             'div',
-                            { 'class': 'well' },
+                            null,
                             _react2['default'].createElement(
                                 'p',
                                 null,

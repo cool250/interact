@@ -20,7 +20,6 @@ class JoinInterview extends React.Component {
                 this.setState({session: data});
                 console.log(data);
                 this.initializeSession();
-
             },
             error: (xhr, status, err) => {
                 console.error(this.props.url, status, err.toString());
@@ -33,15 +32,22 @@ class JoinInterview extends React.Component {
         var sessionId = this.state.session.sessionId;
         var token = this.state.session.token;
 
+        var pubOptions = {
+            publishAudio: true,
+            publishVideo: true,
+            insertMode: 'append',
+            width: '100%',
+            height: '100%'
+        }
+
+        var subOptions = {subscribeToAudio: true, subscribeToVideo: true};
+
         var session = OT.initSession(apiKey, sessionId);
 
         // Subscribe to a newly created stream
         session.on('streamCreated', function (event) {
-            session.subscribe(event.stream, 'subscriber', {
-                insertMode: 'append',
-                width: '100%',
-                height: '100%'
-            });
+            session.subscribe(event.stream, 'subscriber', subOptions);
+            console.log('streamCreated');
         });
 
         session.on('sessionDisconnected', function (event) {
@@ -52,13 +58,10 @@ class JoinInterview extends React.Component {
         session.connect(token, function (error) {
             // If the connection is successful, initialize a publisher and publish to the session
             if (!error) {
-                var publisher = OT.initPublisher('publisher', {
-                    insertMode: 'append',
-                    width: '100%',
-                    height: '100%'
-                });
+                var publisher = OT.initPublisher('publisher', pubOptions);
 
                 session.publish(publisher);
+                console.log('connect');
             } else {
                 console.log('There was an error connecting to the session: ', error.code, error.message);
             }
@@ -71,7 +74,7 @@ class JoinInterview extends React.Component {
                 <Row>
                     <Col md={8}>
                         <div id="publisher"></div>
-                        <div id="subscribers"></div>
+                        <div id="subscriber"></div>
                     </Col>
                     <Col md={4}>
                         <div>

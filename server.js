@@ -9,11 +9,14 @@ var api = require('./server/routes/api');
 // all of our API routes will be prefixed with /v1
 app.use('/api/v1', api);
 
+
 // Add static middleware for other static application file
 app.use('/', express.static(__dirname + '/web'));
 
 var port = process.env.PORT || 5000;
 
 app.listen(port);
+
+console.log("Add debug to check if new version");
 
 console.log("Running on Port " + port);

@@ -35,8 +35,12 @@ class JoinInterview extends React.Component {
         // Initialize an OpenTok Session object
         var session = TB.initSession(sessionId);
 
+        var publisherOptions = {width: 400, height: 300, insertMode: 'append'};
+
+        var subscriberOptions = {width: 400, height: 300, insertMode: 'append'};
+
         // Initialize a Publisher, and place it into the element with id="publisher"
-        var publisher = TB.initPublisher(apiKey, 'publisher');
+        var publisher = TB.initPublisher(apiKey, 'publisher', publisherOptions);
 
         // Attach event handlers
         session.on({
@@ -57,7 +61,7 @@ class JoinInterview extends React.Component {
                 document.getElementById('subscribers').appendChild(subContainer);
 
                 // Subscribe to the stream that caused this event, put it inside the container we just made
-                session.subscribe(event.stream, subContainer);
+                session.subscribe(event.stream, subContainer, subscriberOptions);
             }
 
         });

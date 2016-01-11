@@ -52241,6 +52241,10 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactBootstrap = require('react-bootstrap');
 
+var _ShowQuestionsJsx = require('./ShowQuestions.jsx');
+
+var _ShowQuestionsJsx2 = _interopRequireDefault(_ShowQuestionsJsx);
+
 var JoinInterview = (function (_React$Component) {
     _inherits(JoinInterview, _React$Component);
 
@@ -52266,7 +52270,6 @@ var JoinInterview = (function (_React$Component) {
                 dataType: 'json',
                 success: function success(data) {
                     _this.setState({ session: data });
-                    console.log(data);
                     _this.initializeSession();
                 },
                 error: function error(xhr, status, err) {
@@ -52336,33 +52339,7 @@ var JoinInterview = (function (_React$Component) {
                     _react2['default'].createElement(
                         _reactBootstrap.Col,
                         { md: 4 },
-                        _react2['default'].createElement(
-                            'div',
-                            null,
-                            _react2['default'].createElement(
-                                'p',
-                                null,
-                                'Some text..'
-                            )
-                        ),
-                        _react2['default'].createElement(
-                            'div',
-                            null,
-                            _react2['default'].createElement(
-                                'p',
-                                null,
-                                'Upcoming Events..'
-                            )
-                        ),
-                        _react2['default'].createElement(
-                            'div',
-                            null,
-                            _react2['default'].createElement(
-                                'p',
-                                null,
-                                'Visit Our Blog'
-                            )
-                        )
+                        _react2['default'].createElement(_ShowQuestionsJsx2['default'], null)
                     )
                 )
             );
@@ -52377,7 +52354,7 @@ var JoinInterview = (function (_React$Component) {
 exports['default'] = JoinInterview;
 module.exports = exports['default'];
 
-},{"react":452,"react-bootstrap":264}],467:[function(require,module,exports){
+},{"./ShowQuestions.jsx":468,"react":452,"react-bootstrap":264}],467:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -52495,4 +52472,77 @@ var NavigationBar = (function (_React$Component) {
 exports['default'] = NavigationBar;
 module.exports = exports['default'];
 
-},{"react":452,"react-router":319}]},{},[458]);
+},{"react":452,"react-router":319}],468:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+    value: true
+});
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactBootstrap = require('react-bootstrap');
+
+var ShowQuestions = (function (_React$Component) {
+    _inherits(ShowQuestions, _React$Component);
+
+    function ShowQuestions(props) {
+        _classCallCheck(this, ShowQuestions);
+
+        _get(Object.getPrototypeOf(ShowQuestions.prototype), 'constructor', this).call(this, props);
+    }
+
+    _createClass(ShowQuestions, [{
+        key: 'shouldComponentUpdate',
+        value: function shouldComponentUpdate() {
+            console.log("Inside should update");
+            return true;
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2['default'].createElement(
+                _reactBootstrap.Panel,
+                { header: 'Interview Questions', bsStyle: 'primary' },
+                _react2['default'].createElement(
+                    _reactBootstrap.ListGroup,
+                    null,
+                    _react2['default'].createElement(
+                        _reactBootstrap.ListGroupItem,
+                        null,
+                        '1. What is your greatest strength ?'
+                    ),
+                    _react2['default'].createElement(
+                        _reactBootstrap.ListGroupItem,
+                        null,
+                        '2. Why are you interested in the position ?'
+                    ),
+                    _react2['default'].createElement(
+                        _reactBootstrap.ListGroupItem,
+                        null,
+                        '...'
+                    )
+                )
+            );
+        }
+    }]);
+
+    return ShowQuestions;
+})(_react2['default'].Component);
+
+exports['default'] = ShowQuestions;
+module.exports = exports['default'];
+
+},{"react":452,"react-bootstrap":264}]},{},[458]);

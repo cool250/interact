@@ -1,5 +1,6 @@
 import React from 'react';
 import {Grid, Row, Col, Button, Input} from 'react-bootstrap';
+import ShowQuestions from './ShowQuestions.jsx';
 
 class JoinInterview extends React.Component {
 
@@ -18,7 +19,6 @@ class JoinInterview extends React.Component {
             dataType: 'json',
             success: (data) => {
                 this.setState({session: data});
-                console.log(data);
                 this.initializeSession();
             },
             error: (xhr, status, err) => {
@@ -79,15 +79,7 @@ class JoinInterview extends React.Component {
                         <div id="subscribers"></div>
                     </Col>
                     <Col md={4}>
-                        <div>
-                            <p>Some text..</p>
-                        </div>
-                        <div>
-                            <p>Upcoming Events..</p>
-                        </div>
-                        <div>
-                            <p>Visit Our Blog</p>
-                        </div>
+                        <ShowQuestions/>
                     </Col>
                 </Row>
             </Grid>

@@ -35,9 +35,9 @@ class JoinInterview extends React.Component {
         // Initialize an OpenTok Session object
         var session = TB.initSession(sessionId);
 
-        var publisherOptions = {width: 400, height: 300, insertMode: 'append'};
+        var publisherOptions = {width: '100%', height: '100%',insertMode: 'append'};
 
-        var subscriberOptions = {width: 400, height: 300, insertMode: 'append'};
+        var subscriberOptions = {width: '100%', height: '100%'};
 
         // Initialize a Publisher, and place it into the element with id="publisher"
         var publisher = TB.initPublisher(apiKey, 'publisher', publisherOptions);

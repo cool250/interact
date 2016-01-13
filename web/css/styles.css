@@ -72,3 +72,21 @@ footer a:hover {
     color: #777;
     text-decoration: none;
 }
+
+
+#subscribers {
+    position: absolute;
+    height:480px;
+    width: 640px;
+    z-index: 1;
+}
+
+#publisher {
+    position: absolute;
+    left: 30px;
+    top: 10px;
+    width:128px;
+    height:96px;
+    z-index: 2;
+}
+

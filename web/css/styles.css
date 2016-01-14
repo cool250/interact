@@ -73,11 +73,10 @@ footer a:hover {
     text-decoration: none;
 }
 
-
 #subscribers {
     position: absolute;
-    height:480px;
     width: 640px;
+    height:480px;
     z-index: 1;
 }
 
@@ -85,8 +84,8 @@ footer a:hover {
     position: absolute;
     left: 30px;
     top: 10px;
-    width:128px;
-    height:96px;
+    width: 640px;
+    height:480px;
     z-index: 2;
 }
 

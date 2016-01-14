@@ -52252,7 +52252,6 @@ var JoinInterview = (function (_React$Component) {
         _classCallCheck(this, JoinInterview);
 
         _get(Object.getPrototypeOf(JoinInterview.prototype), 'constructor', this).call(this);
-        this.state = { session: [] };
     }
 
     _createClass(JoinInterview, [{
@@ -52269,7 +52268,7 @@ var JoinInterview = (function (_React$Component) {
                 url: '../api/v1/session',
                 dataType: 'json',
                 success: function success(data) {
-                    _this.setState({ session: data });
+                    _this.setState({ OTSession: data });
                     _this.initializeSession();
                 },
                 error: function error(xhr, status, err) {
@@ -52280,46 +52279,85 @@ var JoinInterview = (function (_React$Component) {
     }, {
         key: 'initializeSession',
         value: function initializeSession() {
-            var apiKey = this.state.session.apiKey;
-            var sessionId = this.state.session.sessionId;
-            var token = this.state.session.token;
 
-            // Initialize an OpenTok Session object
-            var session = TB.initSession(sessionId);
+            TB.addEventListener("exception", this.exceptionHandler);
 
-            var publisherOptions = { width: '100%', height: '100%', insertMode: 'append' };
+            if (TB.checkSystemRequirements() == 1) {
+                // Initialize the session
+                var session = TB.initSession(this.state.OTSession.sessionId);
+            } else {
+                // The client does not support WebRTC.
+                // You can display your own message.
+            }
+
+            this.setState({ session: session });
+
+            // Add event listeners to the session
+            session.on('sessionConnected', this.sessionConnectedHandler.bind(this));
+            session.on('streamCreated', this.streamCreatedHandler.bind(this));
+            session.on('streamDestroyed', this.streamDestroyedHandler.bind(this));
+        }
+
+        // Attach event handlers
+    }, {
+        key: 'connect',
+        value: function connect() {
+            this.state.session.connect(this.state.OTSession.apiKey, this.state.OTSession.token);
+        }
+    }, {
+        key: 'disconnect',
+        value: function disconnect() {
+            this.state.session.disconnect();
+        }
+
+        //--------------------------------------
+        //  OPENTOK EVENT HANDLERS
+        //--------------------------------------
+
+    }, {
+        key: 'sessionConnectedHandler',
+        value: function sessionConnectedHandler(event) {
+            // Make up an id for our publisher
+            var divId = 'publisher';
+
+            var publisherOptions = { width: '100%', height: '100%', resolution: '1280x720', insertMode: 'append' };
+            // Initialize a Publisher, and place it into the element with id="publisher"
+            var publisher = TB.initPublisher(divId, publisherOptions);
+            this.state.session.publish(publisher);
+        }
+    }, {
+        key: 'streamCreatedHandler',
+        value: function streamCreatedHandler(event) {
+
+            console.log("streamCreatedHandler" + event.streams.length);
+
+            var subContainer = document.createElement('div');
+            subContainer.id = 'stream-' + event.stream.streamId;
+            document.getElementById('subscribers').appendChild(subContainer);
 
             var subscriberOptions = { width: '100%', height: '100%' };
 
-            // Initialize a Publisher, and place it into the element with id="publisher"
-            var publisher = TB.initPublisher(apiKey, 'publisher', publisherOptions);
+            // Subscribe to the stream that caused this event, put it inside the container we just made
+            this.state.session.subscribe(event.stream, subContainer, subscriberOptions);
+            this.resizePublisher("128px", "96px");
+        }
+    }, {
+        key: 'streamDestroyedHandler',
+        value: function streamDestroyedHandler(event) {
+            // Get all destroyed streams
+            this.resizePublisher("640px", "480px");
+        }
 
-            // Attach event handlers
-            session.on({
+        //--------------------------------------
+        //  HELPER METHODS
+        //--------------------------------------
 
-                // This function runs when session.connect() asynchronously completes
-                sessionConnected: function sessionConnected(event) {
-                    // Publish the publisher we initialzed earlier (this will trigger 'streamCreated' on other
-                    // clients)
-                    session.publish(publisher);
-                },
-
-                // This function runs when another client publishes a stream (eg. session.publish())
-                streamCreated: function streamCreated(event) {
-                    // Create a container for a new Subscriber, assign it an id using the streamId, put it inside
-                    // the element with id="subscribers"
-                    var subContainer = document.createElement('div');
-                    subContainer.id = 'stream-' + event.stream.streamId;
-                    document.getElementById('subscribers').appendChild(subContainer);
-
-                    // Subscribe to the stream that caused this event, put it inside the container we just made
-                    session.subscribe(event.stream, subContainer, subscriberOptions);
-                }
-
-            });
-
-            // Connect to the Session using the 'apiKey' of the application and a 'token' for permission
-            session.connect(apiKey, token);
+    }, {
+        key: 'resizePublisher',
+        value: function resizePublisher(width, height) {
+            var publisherContainer = document.getElementById('publisher');
+            publisherContainer.style.width = width;
+            publisherContainer.style.height = height;
         }
     }, {
         key: 'render',
@@ -52327,6 +52365,15 @@ var JoinInterview = (function (_React$Component) {
             return _react2['default'].createElement(
                 _reactBootstrap.Grid,
                 { fluid: true },
+                _react2['default'].createElement(
+                    _reactBootstrap.Row,
+                    null,
+                    _react2['default'].createElement(
+                        'button',
+                        { type: 'button', className: 'btn btn-primary', onClick: this.connect.bind(this) },
+                        'Join Interview'
+                    )
+                ),
                 _react2['default'].createElement(
                     _reactBootstrap.Row,
                     null,

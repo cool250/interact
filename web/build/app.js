@@ -51675,7 +51675,7 @@ var CodeEditor = (function (_React$Component) {
                 null,
                 _react2['default'].createElement(
                     _reactBootstrap.Row,
-                    null,
+                    { className: 'vertical-align' },
                     _react2['default'].createElement(
                         _reactBootstrap.Col,
                         { md: 2 },
@@ -52367,7 +52367,7 @@ var JoinInterview = (function (_React$Component) {
         value: function render() {
             return _react2['default'].createElement(
                 _reactBootstrap.Grid,
-                { fluid: true },
+                null,
                 _react2['default'].createElement(
                     _reactBootstrap.Row,
                     null,

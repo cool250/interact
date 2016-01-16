@@ -8,7 +8,6 @@
     font-weight: 300;
     line-height: 16px;
     color: #fff;
-    -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
 }
 .btn-link-1:hover, .btn-link-1:focus, .btn-link-1:active { outline: 0; opacity: 0.6; color: #fff; }
 
@@ -34,7 +33,6 @@
     font-weight: 300;
     line-height: 16px;
     color: #fff;
-    -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
 }
 .btn-link-2:hover, .btn-link-2:focus,
 .btn-link-2:active, .btn-link-2:active:focus { outline: 0; opacity: 0.6; background: rgba(0, 0, 0, 0.3); color: #fff; }
@@ -47,7 +45,6 @@
 	overflow: hidden;
 	padding: 0 25px 15px 25px;
 	background: #fff;
-	-moz-border-radius: 4px 4px 0 0; -webkit-border-radius: 4px 4px 0 0; border-radius: 4px 4px 0 0;
 	text-align: left;
 }
 
@@ -71,7 +68,6 @@
 .form-bottom {
 	padding: 25px 25px 30px 25px;
 	background: #eee;
-	-moz-border-radius: 0 0 4px 4px; -webkit-border-radius: 0 0 4px 4px; border-radius: 0 0 4px 4px;
 	text-align: left;
 }
 

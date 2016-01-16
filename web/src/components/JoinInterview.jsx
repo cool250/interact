@@ -104,7 +104,7 @@ class JoinInterview extends React.Component {
 
     render() {
         return (
-            <Grid fluid={true}>
+            <Grid>
                 <Row>
                     <button type="button" className="btn btn-primary" onClick={this.connect.bind(this)}>Join Interview</button>
                 </Row>

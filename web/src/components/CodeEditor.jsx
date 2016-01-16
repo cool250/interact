@@ -21,24 +21,24 @@ class CodeEditor extends React.Component {
         this.changeMode = this.changeMode.bind(this);
     }
 
-    changeMode (e) {
+    changeMode(e) {
         var mode = e.target.value;
         this.setState({
             mode: mode
         });
     }
 
-    toggleReadOnly () {
+    toggleReadOnly() {
         this.setState({
             readOnly: !this.state.readOnly
         }, () => this.refs.editor.focus());
     }
 
-    interact(cm){
+    interact(cm) {
         console.log(cm.getValue());
     }
 
-    render () {
+    render() {
         var options = {
             lineNumbers: true,
             readOnly: this.state.readOnly,
@@ -48,7 +48,7 @@ class CodeEditor extends React.Component {
         return (
 
             <Grid >
-                <Row>
+                <Row className="vertical-align">
                     <Col md={2}>
                         <label htmlFor="markup">Select Language:</label>
                     </Col>
@@ -73,6 +73,7 @@ class CodeEditor extends React.Component {
             </Grid>
         );
     }
-};
+}
+;
 
 export default CodeEditor;

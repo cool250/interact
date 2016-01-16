@@ -9,6 +9,12 @@ body {
     color: #888;
 }
 
+.vertical-align {
+    padding:10px;
+    display: flex;
+    align-items: center;
+}
+
 /* Add a dark background color with a little bit see-through */
 .navbar {
     margin-bottom: 0;

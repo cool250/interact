@@ -51501,6 +51501,10 @@ var _componentsJoinInterviewJsx = require('./components/JoinInterview.jsx');
 
 var _componentsJoinInterviewJsx2 = _interopRequireDefault(_componentsJoinInterviewJsx);
 
+var _componentsLoginFormJsx = require('./components/LoginForm.jsx');
+
+var _componentsLoginFormJsx2 = _interopRequireDefault(_componentsLoginFormJsx);
+
 // Finally, we render a <Router> with some <Route>s.
 // It does all the fancy routing stuff for us.
 // @TODO add the child paths e.g. <Route path="form" component={CreateInterviewForm}/>
@@ -51513,10 +51517,11 @@ var _componentsJoinInterviewJsx2 = _interopRequireDefault(_componentsJoinIntervi
         _react2['default'].createElement(_reactRouter.IndexRoute, { component: _componentsContentJsx2['default'] }),
         _react2['default'].createElement(_reactRouter.Route, { path: 'create', component: _componentsCreateInterviewFormJsx2['default'] }),
         _react2['default'].createElement(_reactRouter.Route, { path: 'join', component: _componentsJoinInterviewJsx2['default'] })
-    )
+    ),
+    _react2['default'].createElement(_reactRouter.Route, { path: '/login', component: _componentsLoginFormJsx2['default'] })
 ), ReactApp);
 
-},{"./components/AppLayout.jsx":459,"./components/Content.jsx":462,"./components/CreateInterviewForm.jsx":463,"./components/JoinInterview.jsx":466,"react":452,"react-dom":275,"react-router":319}],459:[function(require,module,exports){
+},{"./components/AppLayout.jsx":459,"./components/Content.jsx":462,"./components/CreateInterviewForm.jsx":463,"./components/JoinInterview.jsx":466,"./components/LoginForm.jsx":467,"react":452,"react-dom":275,"react-router":319}],459:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -51579,7 +51584,7 @@ var AppLayout = (function (_React$Component) {
 exports['default'] = AppLayout;
 module.exports = exports['default'];
 
-},{"./Content.jsx":462,"./Footer.jsx":465,"./NavBar.jsx":467,"react":452}],460:[function(require,module,exports){
+},{"./Content.jsx":462,"./Footer.jsx":465,"./NavBar.jsx":468,"react":452}],460:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -52401,7 +52406,155 @@ var JoinInterview = (function (_React$Component) {
 exports['default'] = JoinInterview;
 module.exports = exports['default'];
 
-},{"./ShowQuestions.jsx":468,"react":452,"react-bootstrap":264}],467:[function(require,module,exports){
+},{"./ShowQuestions.jsx":469,"react":452,"react-bootstrap":264}],467:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+    value: true
+});
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactBootstrap = require('react-bootstrap');
+
+var LoginForm = (function (_React$Component) {
+    _inherits(LoginForm, _React$Component);
+
+    function LoginForm() {
+        _classCallCheck(this, LoginForm);
+
+        _get(Object.getPrototypeOf(LoginForm.prototype), 'constructor', this).call(this);
+    }
+
+    _createClass(LoginForm, [{
+        key: 'render',
+        value: function render() {
+            return _react2['default'].createElement(
+                'div',
+                { className: 'top-content' },
+                _react2['default'].createElement(
+                    'div',
+                    { className: 'inner-bg' },
+                    _react2['default'].createElement(
+                        'div',
+                        { className: 'container' },
+                        _react2['default'].createElement(
+                            'div',
+                            { className: 'row' },
+                            _react2['default'].createElement(
+                                'div',
+                                { className: 'col-sm-6 col-sm-offset-3 form-box' },
+                                _react2['default'].createElement(
+                                    'div',
+                                    { className: 'form-top' },
+                                    _react2['default'].createElement(
+                                        'div',
+                                        { className: 'form-top-left' },
+                                        _react2['default'].createElement(
+                                            'p',
+                                            null,
+                                            'Enter your username and password to log on:'
+                                        )
+                                    ),
+                                    _react2['default'].createElement(
+                                        'div',
+                                        { className: 'form-top-right' },
+                                        _react2['default'].createElement('i', { className: 'fa fa-key' })
+                                    )
+                                ),
+                                _react2['default'].createElement(
+                                    'div',
+                                    { className: 'form-bottom' },
+                                    _react2['default'].createElement(
+                                        'form',
+                                        { role: 'form', action: '', method: 'post', className: 'login-form' },
+                                        _react2['default'].createElement(
+                                            'div',
+                                            { className: 'form-group' },
+                                            _react2['default'].createElement(
+                                                'label',
+                                                { className: 'sr-only', htmlFor: 'form-username' },
+                                                'Username'
+                                            ),
+                                            _react2['default'].createElement('input', { type: 'text', name: 'form-username', placeholder: 'Username...',
+                                                className: 'form-username form-control', id: 'form-username' })
+                                        ),
+                                        _react2['default'].createElement(
+                                            'div',
+                                            { className: 'form-group' },
+                                            _react2['default'].createElement(
+                                                'label',
+                                                { className: 'sr-only', htmlFor: 'form-password' },
+                                                'Password'
+                                            ),
+                                            _react2['default'].createElement('input', { type: 'password', name: 'form-password', placeholder: 'Password...',
+                                                className: 'form-password form-control', id: 'form-password' })
+                                        ),
+                                        _react2['default'].createElement(
+                                            'button',
+                                            { type: 'submit', className: 'btn' },
+                                            'Sign in!'
+                                        )
+                                    )
+                                )
+                            )
+                        ),
+                        _react2['default'].createElement(
+                            'div',
+                            { className: 'row' },
+                            _react2['default'].createElement(
+                                'div',
+                                { className: 'col-sm-6 col-sm-offset-3 social-login' },
+                                _react2['default'].createElement(
+                                    'div',
+                                    { className: 'social-login-buttons' },
+                                    _react2['default'].createElement(
+                                        'a',
+                                        { className: 'btn btn-link-1 btn-link-1-facebook', href: '#' },
+                                        _react2['default'].createElement('i', { className: 'fa fa-facebook' }),
+                                        ' Facebook'
+                                    ),
+                                    _react2['default'].createElement(
+                                        'a',
+                                        { className: 'btn btn-link-1 btn-link-1-twitter', href: '#' },
+                                        _react2['default'].createElement('i', { className: 'fa fa-twitter' }),
+                                        ' Twitter'
+                                    ),
+                                    _react2['default'].createElement(
+                                        'a',
+                                        { className: 'btn btn-link-1 btn-link-1-google-plus', href: '#' },
+                                        _react2['default'].createElement('i', { className: 'fa fa-google-plus' }),
+                                        ' Google Plus'
+                                    )
+                                )
+                            )
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return LoginForm;
+})(_react2['default'].Component);
+
+;
+exports['default'] = LoginForm;
+module.exports = exports['default'];
+
+},{"react":452,"react-bootstrap":264}],468:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -52489,18 +52642,8 @@ var NavigationBar = (function (_React$Component) {
                             'li',
                             null,
                             _react2['default'].createElement(
-                                'a',
-                                { href: '#' },
-                                _react2['default'].createElement('span', { className: 'glyphicon glyphicon-user' }),
-                                ' Sign Up'
-                            )
-                        ),
-                        _react2['default'].createElement(
-                            'li',
-                            null,
-                            _react2['default'].createElement(
-                                'a',
-                                { href: '#' },
+                                _reactRouter.Link,
+                                { to: '/login' },
                                 _react2['default'].createElement('span', { className: 'glyphicon glyphicon-log-in' }),
                                 ' Login'
                             )
@@ -52519,7 +52662,7 @@ var NavigationBar = (function (_React$Component) {
 exports['default'] = NavigationBar;
 module.exports = exports['default'];
 
-},{"react":452,"react-router":319}],468:[function(require,module,exports){
+},{"react":452,"react-router":319}],469:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {

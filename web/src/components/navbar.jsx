@@ -13,12 +13,12 @@ class NavigationBar extends React.Component {
                         </a>
                     </div>
                     <ul className="nav navbar-nav">
-                        <li className="active"><a href="#">Home</a></li>
-                        <li><Link to="/join">Join</Link></li>
-                        <li><Link to="/create">Create Interview</Link></li>
+                        <li className="active"><a href="#"><i className="fa fa-home"></i> Home</a></li>
+                        <li><Link to="/join"><i className="fa fa-video-camera"></i> Join</Link></li>
+                        <li><Link to="/create"><i className="fa fa-pencil-square-o"></i> Create Interview</Link></li>
                     </ul>
                     <ul className="nav navbar-nav navbar-right">
-                        <li><Link to="/login"><span className="glyphicon glyphicon-log-in"></span> Login</Link></li>
+                        <li><Link to="/login"><i className="fa fa-sign-in"></i> Login</Link></li>
                     </ul>
                 </div>
             </nav>

@@ -51506,8 +51506,6 @@ var _componentsLoginFormJsx = require('./components/LoginForm.jsx');
 var _componentsLoginFormJsx2 = _interopRequireDefault(_componentsLoginFormJsx);
 
 // Finally, we render a <Router> with some <Route>s.
-// It does all the fancy routing stuff for us.
-// @TODO add the child paths e.g. <Route path="form" component={CreateInterviewForm}/>
 (0, _reactDom.render)(_react2['default'].createElement(
     _reactRouter.Router,
     { history: _reactRouter.browserHistory },
@@ -51518,7 +51516,7 @@ var _componentsLoginFormJsx2 = _interopRequireDefault(_componentsLoginFormJsx);
         _react2['default'].createElement(_reactRouter.Route, { path: 'create', component: _componentsCreateInterviewFormJsx2['default'] }),
         _react2['default'].createElement(_reactRouter.Route, { path: 'join', component: _componentsJoinInterviewJsx2['default'] })
     ),
-    _react2['default'].createElement(_reactRouter.Route, { path: '/login', component: _componentsLoginFormJsx2['default'] })
+    _react2['default'].createElement(_reactRouter.Route, { path: 'login', component: _componentsLoginFormJsx2['default'] })
 ), ReactApp);
 
 },{"./components/AppLayout.jsx":459,"./components/Content.jsx":462,"./components/CreateInterviewForm.jsx":463,"./components/JoinInterview.jsx":466,"./components/LoginForm.jsx":467,"react":452,"react-dom":275,"react-router":319}],459:[function(require,module,exports){
@@ -52465,13 +52463,9 @@ var LoginForm = (function (_React$Component) {
                                         _react2['default'].createElement(
                                             'p',
                                             null,
-                                            'Enter your username and password to log on:'
+                                            _react2['default'].createElement('i', { className: 'fa fa-key' }),
+                                            ' Enter your username and password to log on:'
                                         )
-                                    ),
-                                    _react2['default'].createElement(
-                                        'div',
-                                        { className: 'form-top-right' },
-                                        _react2['default'].createElement('i', { className: 'fa fa-key' })
                                     )
                                 ),
                                 _react2['default'].createElement(
@@ -52613,7 +52607,8 @@ var NavigationBar = (function (_React$Component) {
                             _react2['default'].createElement(
                                 'a',
                                 { href: '#' },
-                                'Home'
+                                _react2['default'].createElement('i', { className: 'fa fa-home' }),
+                                ' Home'
                             )
                         ),
                         _react2['default'].createElement(
@@ -52622,7 +52617,8 @@ var NavigationBar = (function (_React$Component) {
                             _react2['default'].createElement(
                                 _reactRouter.Link,
                                 { to: '/join' },
-                                'Join'
+                                _react2['default'].createElement('i', { className: 'fa fa-video-camera' }),
+                                ' Join'
                             )
                         ),
                         _react2['default'].createElement(
@@ -52631,7 +52627,8 @@ var NavigationBar = (function (_React$Component) {
                             _react2['default'].createElement(
                                 _reactRouter.Link,
                                 { to: '/create' },
-                                'Create Interview'
+                                _react2['default'].createElement('i', { className: 'fa fa-pencil-square-o' }),
+                                ' Create Interview'
                             )
                         )
                     ),
@@ -52644,7 +52641,7 @@ var NavigationBar = (function (_React$Component) {
                             _react2['default'].createElement(
                                 _reactRouter.Link,
                                 { to: '/login' },
-                                _react2['default'].createElement('span', { className: 'glyphicon glyphicon-log-in' }),
+                                _react2['default'].createElement('i', { className: 'fa fa-sign-in' }),
                                 ' Login'
                             )
                         )

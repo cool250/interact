@@ -9,8 +9,6 @@ import JoinInterview from './components/JoinInterview.jsx';
 import LoginForm from './components/LoginForm.jsx';
 
 // Finally, we render a <Router> with some <Route>s.
-// It does all the fancy routing stuff for us.
-// @TODO add the child paths e.g. <Route path="form" component={CreateInterviewForm}/>
 render((
     <Router history={browserHistory}>
         <Route path="/" component={AppLayout}>
@@ -18,7 +16,7 @@ render((
             <Route path="create" component={CreateInterviewForm}/>
             <Route path="join" component={JoinInterview}/>
         </Route>
-        <Route path="/login" component={LoginForm}>
+        <Route path="login" component={LoginForm}>
         </Route>
     </Router>
 ), ReactApp)

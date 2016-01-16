@@ -17,10 +17,7 @@ class LoginForm extends React.Component {
                             <div className="col-sm-6 col-sm-offset-3 form-box">
                                 <div className="form-top">
                                     <div className="form-top-left">
-                                        <p>Enter your username and password to log on:</p>
-                                    </div>
-                                    <div className="form-top-right">
-                                        <i className="fa fa-key"></i>
+                                        <p><i className="fa fa-key"></i> Enter your username and password to log on:</p>
                                     </div>
                                 </div>
                                 <div className="form-bottom">
